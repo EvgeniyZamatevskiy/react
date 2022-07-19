@@ -1,1 +1,1 @@
-export const a = 1
+export { ExampleContext } from './ExampleContext/ExampleContext'

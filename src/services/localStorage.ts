@@ -1,5 +1,5 @@
 export const setDataToLocalStorage = (localStorageName: string, stringData: string,): void => {
-	return localStorage.setItem(localStorageName, stringData)
+	localStorage.setItem(localStorageName, stringData)
 }
 
 export const getParseLocalStorageData = (localStorageName: string): any[] => {
