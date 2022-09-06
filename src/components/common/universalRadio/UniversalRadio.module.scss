@@ -1,0 +1,30 @@
+@import 'styles/sass/mixins.scss';
+
+.primaryLabel {
+	@include flex(row, stretch, center);
+	width: 156px;
+	line-height: 24px;
+
+	.primaryRadio {
+		appearance: none;
+		height: 16px;
+		width: 16px;
+		margin-right: 12px;
+		border-radius: 50%;
+		background-color: #fff;
+		border: 1px solid #000;
+		transition: border 0.1s ease-in-out 0s;
+
+		&:hover {
+			border: 4px solid #b9becf;
+		}
+
+		&:checked {
+			border: 4px solid #000;
+		}
+
+		&:focus {
+			border: 4px solid #000;
+		}
+	}
+}

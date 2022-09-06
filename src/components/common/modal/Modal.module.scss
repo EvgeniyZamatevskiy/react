@@ -1,0 +1,29 @@
+ @import 'styles/sass/mixins.scss';
+
+ .modal {
+ 	@include flex(row, center, center);
+ 	height: 100vh;
+ 	width: 100%;
+ 	background-color: rgba(0, 0, 0, 0.4);
+ 	position: fixed;
+ 	top: 0;
+ 	left: 0;
+ 	opacity: 0;
+ 	pointer-events: none;
+ 	transition: 0.5s;
+ 	z-index: 100;
+
+ 	.content {
+ 		padding: 20px;
+ 		border-radius: 2px;
+ 		background-color: #fff;
+ 		transition: 0.4s all;
+ 		width: 395px;
+ 		min-height: 240px;
+ 	}
+ }
+
+ .active {
+ 	opacity: 1;
+ 	pointer-events: all;
+ }

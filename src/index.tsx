@@ -1,18 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
-import { App } from './App'
 import { Provider } from 'react-redux'
-import './styles/index.scss'
 import { BrowserRouter } from 'react-router-dom'
-import { store } from 'store'
+import { App } from 'App'
+import 'styles/index.scss'
+import { Testing } from 'testing/Testing'
+import { store } from 'reduxToolkit'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Testing />
     </BrowserRouter>
   </Provider>
 )
