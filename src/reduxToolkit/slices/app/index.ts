@@ -10,8 +10,8 @@ const initialState: AppSliceInitialStateType = {
 	errorMessage: EMPTY_STRING,
 
 	items: [
-		// { id: 1, title: 'example', isActive: true, filter: FilterValue.ALL, isDisabled: false },
-		// { id: 2, title: 'example2', isActive: false, filter: FilterValue.ALL, isDisabled: false },
+		// { id: 1, title: 'example', isActive: true, filter: FilterValue.ALL},
+		// { id: 2, title: 'example2', isActive: false, filter: FilterValue.ALL},
 	]
 }
 

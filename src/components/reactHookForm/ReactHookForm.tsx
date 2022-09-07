@@ -76,14 +76,14 @@ export const ReactHookForm: FC<ReactHookFormPropsType> = (): ReturnComponentType
 			<form className={style.form} onSubmit={handleSubmit(onSubmit)}>
 				<input type='email' placeholder='Email'
 					{...register('email', emailSettings)} />
-				<p>{errors?.email?.message}</p>
+				{errors?.email && <p>{errors?.email.message}</p>}
 
 				<input type={'password'} placeholder='Password'
 					{...register('password', passwordSettings)} />
-				<p>{errors?.password?.message}</p>
+				{errors?.password && <p>{errors?.password.message}</p>}
 				<input type='password' placeholder='Confirm password'
 					{...register('confirmPassword', confirmPasswordSettings)} />
-				<p>{errors?.confirmPassword?.message}</p>
+				{errors?.confirmPassword && <p>{errors?.confirmPassword.message}</p>}
 
 				<select {...register('category', { required: true })}>
 					<option value='1'>Select 1</option>

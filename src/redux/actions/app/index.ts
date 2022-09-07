@@ -1,5 +1,5 @@
+import { ItemType } from 'redux/reducers/app/types'
 import { Nullable } from 'types'
-import { ItemType } from './types'
 
 export const setIsLoadingAC = (isLoading: boolean) => ({ type: 'APP/SET-IS-LOADING', isLoading } as const)
 

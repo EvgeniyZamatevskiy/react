@@ -27,16 +27,3 @@ export type ChangeItemTitleActionType = ReturnType<typeof changeItemTitleAC>
 export type RemoveItemActionType = ReturnType<typeof removeItemAC>
 export type SetSupplementedItemsActionType = ReturnType<typeof setSupplementedItemsAC>
 export type ToggleItemIsActiveActionType = ReturnType<typeof toggleItemIsActiveAC>
-
-export type ItemType = {
-	id: number
-	title: string
-	isActive: boolean
-	filter: FilterValue
-}
-
-export enum FilterValue {
-	ALL = 'all',
-	ACTIVE = 'active',
-	COMPLETED = 'completed'
-} 
