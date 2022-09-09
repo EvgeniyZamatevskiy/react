@@ -1,5 +1,5 @@
 import { Path } from 'enums'
-import { Home } from 'pages'
+import { Home } from 'pages/home'
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 
