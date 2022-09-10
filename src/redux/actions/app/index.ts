@@ -21,3 +21,5 @@ export const changeAnyValueAC = (id: number, domainPayload: { title?: string, is
 export const toggleItemIsActiveAC = (id: number) => ({ type: 'APP/TOGGLE-ITEM-IS-ACTIVE', id } as const)
 
 export const setCountAC = () => ({ type: 'APP/SET-COUNT' } as const)
+
+export const getCounterAC = (count: number) => ({ type: 'APP/GET-COUNTER', count } as const)

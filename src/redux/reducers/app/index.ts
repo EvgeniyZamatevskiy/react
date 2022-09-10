@@ -5,6 +5,7 @@ import { AppReducerInitStateType, FilterValue } from './types'
 const initState: AppReducerInitStateType = {
 	isLoading: false,
 	errorMessage: null,
+	// counter: getParseLocalStorageData<number>('counter', 0), // При работе с LocalStorage, чтобы не получать значение в Thunk
 	counter: 0,
 
 	items: [
@@ -34,6 +35,9 @@ export const appReducer = (state: AppReducerInitStateType = initState, action: A
 
 		case 'APP/SET-COUNT':
 			return { ...state, counter: state.counter + 1 }
+
+		case 'APP/GET-COUNTER':
+			return { ...state, counter: action.count }
 
 		default:
 			return state
