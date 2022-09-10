@@ -1,9 +1,11 @@
 import { AppReducerActionsType } from 'redux/actions/app/types'
+import { getParseLocalStorageData } from 'services'
 import { AppReducerInitStateType, FilterValue } from './types'
 
 const initState: AppReducerInitStateType = {
 	isLoading: false,
 	errorMessage: null,
+	counter: 0,
 
 	items: [
 		{ id: 1, title: 'example', isActive: true, filter: FilterValue.ALL, isDisabled: false },
@@ -29,6 +31,9 @@ export const appReducer = (state: AppReducerInitStateType = initState, action: A
 			return { ...state, items: state.items.map(item => item.id === action.id ? { ...item, isActive: !item.isActive } : item) }
 		case 'APP/REMOVE-ITEM':
 			return { ...state, items: state.items.filter(item => item.id !== action.id) }
+
+		case 'APP/SET-COUNT':
+			return { ...state, counter: state.counter + 1 }
 
 		default:
 			return state

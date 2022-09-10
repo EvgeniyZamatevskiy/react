@@ -6,7 +6,8 @@ import {
 	changeItemTitleAC,
 	removeItemAC,
 	setSupplementedItemsAC,
-	toggleItemIsActiveAC
+	toggleItemIsActiveAC,
+	setCountAC
 } from '.'
 
 export type AppReducerActionsType =
@@ -17,7 +18,8 @@ export type AppReducerActionsType =
 	ChangeItemTitleActionType |
 	RemoveItemActionType |
 	SetSupplementedItemsActionType |
-	ToggleItemIsActiveActionType
+	ToggleItemIsActiveActionType |
+	SetCountActionType
 
 export type SetIsLoadingActionType = ReturnType<typeof setIsLoadingAC>
 export type SetErrorMessageActionType = ReturnType<typeof setErrorMessageAC>
@@ -27,3 +29,4 @@ export type ChangeItemTitleActionType = ReturnType<typeof changeItemTitleAC>
 export type RemoveItemActionType = ReturnType<typeof removeItemAC>
 export type SetSupplementedItemsActionType = ReturnType<typeof setSupplementedItemsAC>
 export type ToggleItemIsActiveActionType = ReturnType<typeof toggleItemIsActiveAC>
+export type SetCountActionType = ReturnType<typeof setCountAC>

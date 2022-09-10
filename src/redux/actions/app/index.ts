@@ -19,3 +19,5 @@ export const changeAnyValueAC = (id: number, domainPayload: { title?: string, is
 	({ type: 'APP/CHANGE-ANY-VALUE', id, domainPayload } as const)
 
 export const toggleItemIsActiveAC = (id: number) => ({ type: 'APP/TOGGLE-ITEM-IS-ACTIVE', id } as const)
+
+export const setCountAC = () => ({ type: 'APP/SET-COUNT' } as const)

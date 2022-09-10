@@ -4,15 +4,16 @@ import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import 'styles/index.scss'
-import { store } from 'reduxToolkit'
 import { App } from 'App'
+import { Testing } from 'testing'
+import { store } from 'redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Testing />
     </BrowserRouter>
   </Provider>
 )
