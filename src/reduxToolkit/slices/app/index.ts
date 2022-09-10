@@ -1,13 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { EMPTY_STRING } from 'constants/base'
-import { asyncAction } from 'reduxToolkit/asyncActions'
+import { asyncAction, counterIncrement, getCounterValue } from 'reduxToolkit/asyncActions'
 import { isLoadingFulfilled, isLoadingPending, isLoadingRejected } from 'reduxToolkit/helpers'
+import { getParseLocalStorageData } from 'services'
 import { AppSliceInitialStateType, ItemType } from './types'
 
 const initialState: AppSliceInitialStateType = {
 	isLoading: false,
 	isDisabled: false,
 	errorMessage: EMPTY_STRING,
+	// counter: getParseLocalStorageData<number>('counter', 0), // При работе с LocalStorage, чтобы не получать значение в Thunk
+	counter: 0,
 
 	items: [
 		// { id: 1, title: 'example', isActive: true, filter: FilterValue.ALL},
@@ -61,11 +64,21 @@ const appSlice = createSlice({
 			// 	state.items[index].isActive = !state.items[index].isActive
 			// }
 		},
+
+		setCounterIncrement(state) {
+			state.counter = state.counter + 1
+		}
 	},
 	extraReducers(builder) {
 		builder
 			.addCase(asyncAction.fulfilled, (state, action) => {
 
+			})
+			.addCase(counterIncrement.fulfilled, (state, action) => {
+				state.counter = action.payload + 1
+			})
+			.addCase(getCounterValue.fulfilled, (state, action) => {
+				state.counter = action.payload
 			})
 			.addMatcher(isLoadingPending, (state) => {
 				state.isLoading = true
@@ -76,6 +89,7 @@ const appSlice = createSlice({
 			.addMatcher(isLoadingRejected, (state) => {
 				state.isLoading = false
 			})
+
 	},
 })
 
@@ -85,7 +99,8 @@ export const {
 	changeItemTitle,
 	changeAnyValue,
 	setErrorMessage,
-	toggleItemIsActive
+	toggleItemIsActive,
+	setCounterIncrement,
 } = appSlice.actions
 
 export default appSlice.reducer

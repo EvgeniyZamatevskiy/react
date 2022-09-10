@@ -8,3 +8,5 @@ export const selectItems = (state: RootStateType): SupplementedItemType[] => sta
 export const selectIsDisabled = (state: RootStateType): boolean => state.app.isDisabled
 
 export const selectErrorMessage = (state: RootStateType): string => state.app.errorMessage
+
+export const selectCounter = (state: RootStateType): number => state.app.counter

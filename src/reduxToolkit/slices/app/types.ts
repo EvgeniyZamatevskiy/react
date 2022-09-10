@@ -1,7 +1,8 @@
 export type AppSliceInitialStateType = {
-	isLoading: boolean,
-	isDisabled: boolean,
-	errorMessage: string,
+	isLoading: boolean
+	isDisabled: boolean
+	errorMessage: string
+	counter: number
 	items: SupplementedItemType[]
 }
 
