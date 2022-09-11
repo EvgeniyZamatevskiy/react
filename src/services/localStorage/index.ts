@@ -2,7 +2,7 @@ export const setDataToLocalStorage = <T>(key: string, data: T): void => {
 	localStorage.setItem(key, JSON.stringify(data))
 }
 
-export const getParseLocalStorageData = <T>(key: string, defaultData: T): T => {
+export const getParseLocalStorageData = <T>(key: string, defaultData: T) => {
 	const data = localStorage.getItem(key)
 
 	if (data !== null) {
@@ -15,16 +15,16 @@ export const getParseLocalStorageData = <T>(key: string, defaultData: T): T => {
 // Example for React:
 // export const Example = () => {
 
-// 	const [count, setCount] = useState(getParseLocalStorageData<number>('counter', 0))
+// 	const [counter, setCounter] = useState(getParseLocalStorageData<number>('counter', 0))
 
 // 	useEffect(() => {
-// 		setDataToLocalStorage('counter', count)
+// 		setDataToLocalStorage('counter', counter)
 // 	}, [count])
 
 // 	return (
 // 	<>
-// 		{count}
-// 		<button onClick = {() => {setCount(count + 1)}}>+</button>
+// 		{counter}
+// 		<button onClick = {() => {setCounter(counter + 1)}}>+</button>
 // 	</>
 // 	)
 // }
@@ -37,13 +37,13 @@ export const getParseLocalStorageData = <T>(key: string, defaultData: T): T => {
 // 	const counter = useSelector(selectCounter)
 
 // 	useEffect(() => {
-// 		dispatch(getCounterValue())
+// 		dispatch(getCurrentCounterValueTC())
 // 	}, [])
 
 // 	return (
 // 	<>
 // 		{counter}
-// 		<button onClick = {() => dispatch(counterIncrement())}>+</button>
+// 		<button onClick = {() => dispatch(counterIncreaseTC())}>+</button>
 // 	</>
 // 	)
 // }

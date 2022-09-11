@@ -25,18 +25,19 @@ export const asyncAction = createAsyncThunk
 		}
 	})
 
-export const counterIncrement = createAsyncThunk
+// При работе с localStorage:
+export const counterIncrease = createAsyncThunk
 	<
 		number,
 		undefined,
 		{ rejectValue: { error: string }, state: RootStateType }
 	>
-	('app/counterIncrement', (_, { rejectWithValue, getState, dispatch }) => {
+	('app/counterIncrease', (_, { rejectWithValue, getState }) => {
 
 		const counter = getState().app.counter
 
 		try {
-			setDataToLocalStorage('counter', counter + 1)
+			setDataToLocalStorage<number>('counter', counter + 1)
 
 			return counter
 		} catch (error) {
@@ -44,17 +45,18 @@ export const counterIncrement = createAsyncThunk
 		}
 	})
 
-export const getCounterValue = createAsyncThunk
+export const getCurrentCounterValue = createAsyncThunk
 	<
 		number,
 		undefined,
 		{ rejectValue: { error: string }, state: RootStateType }
 	>
-	('app/getCounterValue', (_, { rejectWithValue }) => {
+	('app/getCurrentCounterValue', (_, { rejectWithValue }) => {
 
 		try {
-			return getParseLocalStorageData('counter', 0)
+			const counter = getParseLocalStorageData<number>('counter', 0)
 
+			return counter
 		} catch (error) {
 			return handleServerNetworkError(error as AxiosError | Error, rejectWithValue)
 		}

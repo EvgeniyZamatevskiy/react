@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { EMPTY_STRING } from 'constants/base'
-import { asyncAction, counterIncrement, getCounterValue } from 'reduxToolkit/asyncActions'
+import { asyncAction, counterIncrease, getCurrentCounterValue } from 'reduxToolkit/asyncActions'
 import { isLoadingFulfilled, isLoadingPending, isLoadingRejected } from 'reduxToolkit/helpers'
 import { getParseLocalStorageData } from 'services'
 import { AppSliceInitialStateType, ItemType } from './types'
@@ -64,20 +64,16 @@ const appSlice = createSlice({
 			// 	state.items[index].isActive = !state.items[index].isActive
 			// }
 		},
-
-		setCounterIncrement(state) {
-			state.counter = state.counter + 1
-		}
 	},
 	extraReducers(builder) {
 		builder
 			.addCase(asyncAction.fulfilled, (state, action) => {
 
 			})
-			.addCase(counterIncrement.fulfilled, (state, action) => {
+			.addCase(counterIncrease.fulfilled, (state, action) => {
 				state.counter = action.payload + 1
 			})
-			.addCase(getCounterValue.fulfilled, (state, action) => {
+			.addCase(getCurrentCounterValue.fulfilled, (state, action) => {
 				state.counter = action.payload
 			})
 			.addMatcher(isLoadingPending, (state) => {
@@ -100,7 +96,7 @@ export const {
 	changeAnyValue,
 	setErrorMessage,
 	toggleItemIsActive,
-	setCounterIncrement,
+	// counterIncrease,
 } = appSlice.actions
 
 export default appSlice.reducer

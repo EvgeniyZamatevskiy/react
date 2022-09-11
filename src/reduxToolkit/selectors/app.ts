@@ -10,3 +10,9 @@ export const selectIsDisabled = (state: RootStateType): boolean => state.app.isD
 export const selectErrorMessage = (state: RootStateType): string => state.app.errorMessage
 
 export const selectCounter = (state: RootStateType): number => state.app.counter
+
+// Reselect:
+// export const selectItemsByFilter = createSelector(
+// 	[selectItems, selectFilter],
+// 	(items, filter) => {}
+// )

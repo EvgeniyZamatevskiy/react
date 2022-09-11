@@ -10,7 +10,6 @@ const initState: AppReducerInitStateType = {
 
 	items: [
 		{ id: 1, title: 'example', isActive: true, filter: FilterValue.ALL, isDisabled: false },
-		// { id: 2, title: 'example2', isActive: false, filter: FilterValue.ALL, isDisabled: false  },
 	]
 }
 
@@ -33,11 +32,11 @@ export const appReducer = (state: AppReducerInitStateType = initState, action: A
 		case 'APP/REMOVE-ITEM':
 			return { ...state, items: state.items.filter(item => item.id !== action.id) }
 
-		case 'APP/SET-COUNT':
+		case 'APP/COUNTER-INCREASE':
 			return { ...state, counter: state.counter + 1 }
 
-		case 'APP/GET-COUNTER':
-			return { ...state, counter: action.count }
+		case 'APP/GET-CURRENT-COUNTER-VALUE':
+			return { ...state, counter: action.currentCounterValue }
 
 		default:
 			return state
