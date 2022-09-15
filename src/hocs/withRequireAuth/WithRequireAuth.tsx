@@ -4,7 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { ReturnComponentType } from 'types'
 import { RequireAuthPropsType } from './types'
 
-export const RequireAuth: FC<RequireAuthPropsType> = ({ children }): ReturnComponentType => {
+export const WithRequireAuth: FC<RequireAuthPropsType> = ({ children }): ReturnComponentType => {
 
 	const location = useLocation()
 
@@ -17,7 +17,27 @@ export const RequireAuth: FC<RequireAuthPropsType> = ({ children }): ReturnCompo
 	return <>{children}</>
 }
 
-// Использование в компоненте:
+// или
+// export const WithRequireAuth = (Component: () => ReturnComponentType) => {
+
+// 	const NavigateComponent = () => {
+
+// 		const location = useLocation()
+
+// 		const isAuth = false
+
+// 		if (!isAuth) {
+// 			return <Navigate to={Path.LOGIN} state={{ from: location }} />
+// 		}
+
+// 		return <Component />
+// 	}
+
+// 	return NavigateComponent
+// }
+
+
+// Использование в компоненте Login:
 // export type LocationStateType = {
 // 	from: { pathname: string }
 // }
