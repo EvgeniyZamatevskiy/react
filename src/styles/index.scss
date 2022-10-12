@@ -1,17 +1,22 @@
-@import './reset.scss';
-@import './sass/variables.scss';
-@import './sass/templates.scss';
+@import "./reset.scss";
+@import "./sass/variables.scss";
+@import "./sass/templates.scss";
 
 body {
-	color: $textColor;
-	background: $backgroundColor;
-	font-family: $fontFamily;
-	font-size: $fontSize;
-	font-weight: $fontWeight;
-	min-height: 100vh;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  font-family: $fontFamily;
+  color: $colorPrimaryLight;
+  overflow-y: scroll;
 }
 
-.container {
-	max-width: 1280px;
-	margin: 0 auto;
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  &.darkApp {
+    background: $bgPrimaryDark;
+    color: $colorPrimaryDark;
+  }
 }

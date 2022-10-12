@@ -1,5 +1,6 @@
-export { useAppDispatch } from './useAppDispatch'
-export { useAppSelector } from './useAppSelector'
-export { useActions } from './useActions'
-export { useDebounce } from './useDebounce'
-export { useInput } from './useInput'
+export {useAppDispatch} from "./useAppDispatch"
+export {useAppSelector} from "./useAppSelector"
+export {useActions} from "./useActions"
+export {useDebounce} from "./useDebounce"
+export {useInput} from "./useInput"
+export {useGeoLocation} from "./useGeoLocation"

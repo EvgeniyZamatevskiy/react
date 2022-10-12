@@ -1,9 +1,9 @@
-import { instance } from 'api/config'
+import {instance} from "api/config"
 
 export const AUTH = {
-	login() {
-		return instance.post('', {
-			params: {}
-		})
-	}
+  login() {
+    return instance.post("", {
+      params: {}
+    })
+  }
 }

@@ -1,17 +1,20 @@
-import { applyMiddleware, combineReducers, legacy_createStore } from 'redux'
-import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk'
-import { getParseLocalStorageData, setDataToLocalStorage } from 'services'
-import { AppReducerActionsType } from './actions/app/types'
-import { appReducer } from './reducers/app'
+import {applyMiddleware, combineReducers, compose, legacy_createStore} from "redux"
+import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk"
+import {getParseLocalStorageData, setDataToLocalStorage} from "services"
+import {AppReducerActionsType} from "./actions/app/types"
+import {appReducer} from "./reducers/app"
 
 const rootReducer = combineReducers({
-	app: appReducer,
+  app: appReducer,
 })
 
+// const preloadedState = getParseLocalStorageData('counter', {})
+const composeEnhancers = (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+
 export const store = legacy_createStore(
-	rootReducer,
-	// getParseLocalStorageData('counter', {}),
-	applyMiddleware(thunk))
+  rootReducer,
+  // preloadedState,
+  composeEnhancers(applyMiddleware(thunk)))
 
 export type StoreType = typeof store
 export type RootStateType = ReturnType<typeof rootReducer>

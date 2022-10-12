@@ -1,12 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { setDataToLocalStorage, getParseLocalStorageData } from 'services'
-import appSlice from './slices/app'
+import {configureStore} from "@reduxjs/toolkit"
+import {setDataToLocalStorage, getParseLocalStorageData} from "services"
+import appSlice from "./slices/app"
 
 export const store = configureStore({
-	reducer: {
-		app: appSlice,
-	},
-	//preloadedState: getParseLocalStorageData('counter', {})
+  reducer: {
+    app: appSlice,
+  },
+  //preloadedState: getParseLocalStorageData('counter', {})
 })
 
 export type RootStateType = ReturnType<typeof store.getState>

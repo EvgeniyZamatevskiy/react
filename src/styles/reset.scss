@@ -1,78 +1,88 @@
-input,
-textarea,
-button,
-select {
-	font-family: inherit;
-	font-size: inherit;
-}
-
-// ---
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
 }
 
 button {
-	background-color: transparent;
+  cursor: pointer;
 }
 
-button {
-	border: none;
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
 }
 
-textarea {
-	resize: none;
+a, a:visited {
+  text-decoration: none;
 }
 
-textarea,
-input,
-select {
-	outline: none;
+a:hover {
+  text-decoration: none;
 }
 
-input[type='text'],
-input[type='email'] {
-	box-shadow: inset 0 0 0 50px #FFF;
+ul li {
+  list-style: none;
 }
 
-input[type='checkbox'],
-input[type='range'],
-input[type='radio'],
-label,
-select,
-button {
-	cursor: pointer;
+img {
+  vertical-align: top;
 }
 
-li {
-	list-style: none;
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
 }
 
-a {
-	text-decoration: none;
-	color: inherit;
-}
-
-input[type='range'],
-input[type='email'],
-input[type='password'],
-input[type='checkbox'],
-button,
-select {
-
-	&:disabled {
-		opacity: 0.5;
-		cursor: no-drop;
-	}
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-size: inherit;
-	font-weight: 400;
-}
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// textarea:-webkit-autofill,
+// textarea:-webkit-autofill:hover,
+// textarea:-webkit-autofill:focus,
+// select:-webkit-autofill,
+// select:-webkit-autofill:hover,
+// select:-webkit-autofill:focus {
+// 	border: 1px solid #71AAEB;
+// 	-webkit-text-fill-color: #FFF;
+// 	-webkit-box-shadow: 0 0 0px 1000px #303847 inset;
+// 	transition: background-color 5000s ease-in-out 0s;
+// 	caret-color: #FFF;
+// }

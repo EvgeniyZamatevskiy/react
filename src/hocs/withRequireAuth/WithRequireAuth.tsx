@@ -1,20 +1,20 @@
-import React, { FC } from 'react'
-import { Path } from 'enums'
-import { Navigate, useLocation } from 'react-router-dom'
-import { ReturnComponentType } from 'types'
-import { RequireAuthPropsType } from './types'
+import React, {FC} from "react"
+import {Path} from "enums"
+import {Navigate, useLocation} from "react-router-dom"
+import {ReturnComponentType} from "types"
+import {RequireAuthPropsType} from "./types"
 
-export const WithRequireAuth: FC<RequireAuthPropsType> = ({ children }): ReturnComponentType => {
+export const WithRequireAuth: FC<RequireAuthPropsType> = ({children}): ReturnComponentType => {
 
-	const location = useLocation()
+  const location = useLocation()
 
-	const isAuth = false
+  const isAuth = false
 
-	if (!isAuth) {
-		return <Navigate to={Path.LOGIN} state={{ from: location }} />
-	}
+  if (!isAuth) {
+    return <Navigate to={Path.LOGIN} state={{from: location}}/>
+  }
 
-	return <>{children}</>
+  return <>{children}</>
 }
 
 // или
