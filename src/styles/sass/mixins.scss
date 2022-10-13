@@ -5,3 +5,12 @@
   align-items: $alignItems;
   flex-wrap: $flexWrap;
 }
+
+@mixin flexbox() { // display: flex; для разных браузеров
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0;
+}
