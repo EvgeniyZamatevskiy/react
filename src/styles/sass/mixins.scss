@@ -6,6 +6,14 @@
   flex-wrap: $flexWrap;
 }
 
+@mixin anim($time, $delay) {
+  -webkit-transition: all $time ease $delay;
+  -moz-transition: all $time ease $delay;
+  -ms-transform: all $time ease $delay;
+  -o-transition: all $time ease $delay;
+  transition: all $time ease $delay;
+}
+
 @mixin flexbox() { // display: flex; для разных браузеров
   display: -webkit-box;
   display: -moz-box;
