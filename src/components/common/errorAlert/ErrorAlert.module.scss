@@ -1,43 +1,55 @@
-@import 'styles/sass/mixins.scss';
+@import 'src/styles/sass/mixins.scss';
 
 .errorAlert {
-	position: fixed;
-	bottom: 15px;
-	left: 15px;
-	background-color: #D32F2F;
-	padding: 20px;
-	min-width: 300px;
-	border-radius: 10px;
-	@include flex(row, space-between, center);
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  padding: 20px;
+  min-width: 300px;
+  border-radius: 10px;
+  @include flex(row, space-between, center);
 
-	.alertContainer {
-		@include flex(row, stretch, center);
+  .alertContainer {
+    @include flex(row, stretch, center);
 
-		.ellipse {
-			@include flex(row, center, flex-end);
-			min-width: 20px;
-			min-height: 20px;
-			border-radius: 50%;
-			color: #fff;
-			font-weight: 700;
-			font-size: 14px;
-			border: 2px solid #fff;
-			margin-right: 13px;
-		}
+    .icon {
+      @include flex(row, center, flex-end);
+      width: 20px;
+      height: 20px;
+      margin-right: 13px;
+    }
 
-		.alert {
-			margin-right: 20px;
-			color: #fff;
-			max-width: 1500px;
-			overflow-wrap: break-word;
-		}
-	}
+    .alert {
+      margin-right: 20px;
+      color: #fff;
+      max-width: 1500px;
+      overflow-wrap: break-word;
+    }
+  }
 
-	.deactivateErrorAlertBtn {
-		color: #fff;
-	}
+  .deactivateErrorAlertBtn {
+    color: #fff;
+    background-color: transparent;
+  }
 }
 
 .closeErrorAlert {
-	display: none;
+  display: none;
+}
+
+//
+.error {
+  background-color: #D32F2F;
+}
+
+.warning {
+  background-color: #F57C00;
+}
+
+.info {
+  background-color: #0288D1;
+}
+
+.success {
+  background-color: #388E3C;
 }

@@ -1,18 +1,10 @@
 // DarkTheme:
-$bgPrimaryDark: #141414;
-$bgSecondaryDark: #222;
+$bgPrimary: #fff;
+$bgSecondary: #fff;
 
-$colorPrimaryDark: #E1E3E6;
-$colorSecondaryDark: #939393;
-$colorAncillaryDark: #71AAEB;
-
-// LightTheme:
-$bgPrimaryLight: #EDEEF0;
-$bgSecondaryLight: #FFF;
-
-$colorPrimaryLight: #000;
-$colorSecondaryLight: #818C99;
-$colorAncillaryLight: #2A5885;
+$colorPrimary: #000;
+$colorSecondary: #000;
+$colorAncillary: #000;
 
 // Common:
 $fontSize: 14px;
@@ -23,4 +15,9 @@ $fontFamily: 'sans-serif';
 $boxShadowPopup: 0 20px 40px 0 rgb(0 0 0 / 30%);
 
 // Adaptive:
-$mw: 880px
+$minWidth: 320px;
+$maxWidth: 1170;
+$media1: $maxWidth+12;
+$media2: 992.98;
+$media3: 767.98;
+$media4: 479.98;

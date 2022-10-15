@@ -1,13 +1,14 @@
-export { UniversalButton } from './universalButton'
-export { UniversalCheckbox } from './universalCheckbox'
-export { UniversalInput } from './universalInput'
-export { UniversalRadio } from './universalRadio'
-export { UniversalSelect } from './universalSelect'
-export { EditableItem } from './editableItem'
-export { Modal } from './modal'
-export { Eye } from './eye'
-export { Search } from './search'
-export { ErrorAlert } from './errorAlert'
-export { Loader } from './loader'
-export { File } from './file'
-export { CustomLink } from './customLink'
+export {Button} from "./button"
+export {Input} from "./input"
+export {Loader} from "./loader"
+export {Checkbox} from "./checkbox"
+
+export {UniversalRadio} from "./universalRadio"
+export {UniversalSelect} from "./universalSelect"
+export {EditableItem} from "./editableItem"
+export {Modal} from "./modal"
+export {Eye} from "./eye"
+export {Search} from "./search"
+export {ErrorAlert} from "./errorAlert"
+export {File} from "./file"
+export {CustomLink} from "./customLink"

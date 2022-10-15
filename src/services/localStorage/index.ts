@@ -19,7 +19,7 @@ export const getParseLocalStorageData = <T>(key: string, defaultData: T) => {
 
 // 	useEffect(() => {
 // 		setDataToLocalStorage('counter', counter)
-// 	}, [count])
+// 	}, [counter])
 
 // 	return (
 // 	<>

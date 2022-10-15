@@ -1,5 +1,11 @@
-@import "./variables.scss";
-@import "./mixins.scss";
+%flexBox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  //font-size: 0;
+}
 
 %decorBorder {
   border-top: 1px solid #E7E8EC;

@@ -1,1 +1,0 @@
-export { ReactHookForm } from './ReactHookForm'

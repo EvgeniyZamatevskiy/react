@@ -1,1 +1,0 @@
-export { UniversalCheckbox } from './UniversalCheckbox'

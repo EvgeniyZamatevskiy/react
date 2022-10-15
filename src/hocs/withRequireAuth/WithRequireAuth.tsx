@@ -1,5 +1,4 @@
 import React, {FC} from "react"
-import {Path} from "enums"
 import {Navigate, useLocation} from "react-router-dom"
 import {ReturnComponentType} from "types"
 import {RequireAuthPropsType} from "./types"
@@ -11,7 +10,7 @@ export const WithRequireAuth: FC<RequireAuthPropsType> = ({children}): ReturnCom
   const isAuth = false
 
   if (!isAuth) {
-    return <Navigate to={Path.LOGIN} state={{from: location}}/>
+    return <Navigate to={"/login"} state={{from: location}}/>
   }
 
   return <>{children}</>
@@ -27,7 +26,7 @@ export const WithRequireAuth: FC<RequireAuthPropsType> = ({children}): ReturnCom
 // 		const isAuth = false
 
 // 		if (!isAuth) {
-// 			return <Navigate to={Path.LOGIN} state={{ from: location }} />
+// 			return <Navigate to={"/login"} state={{ from: location }} />
 // 		}
 
 // 		return <Component />
