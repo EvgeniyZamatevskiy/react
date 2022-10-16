@@ -1,6 +1,7 @@
 import React, {FC} from "react"
 import {ReturnComponentType} from "types"
 import {ButtonPropsType} from "./types"
+import {EMPTY_STRING} from "constants/base"
 import style from "./Button.module.scss"
 
 export const Button: FC<ButtonPropsType> =
@@ -11,9 +12,14 @@ export const Button: FC<ButtonPropsType> =
      ...restProps
    }): ReturnComponentType => {
 
-    const primaryClass = isPrimary && `${style.primaryButton}`
-    const secondaryClass = isSecondary && `${style.secondaryButton}`
-    const additionalClass = className && className
+    const primaryButtonClass = isPrimary ? `${style.primaryButton}` : EMPTY_STRING
+    const secondaryButtonClass = isSecondary ? `${style.secondaryButton}` : EMPTY_STRING
+    const additionalButtonClass = className ? className : EMPTY_STRING
 
-    return <button className={`${primaryClass} ${secondaryClass} ${additionalClass}`} {...restProps} />
+    return (
+      <button
+        className={`${primaryButtonClass} ${secondaryButtonClass} ${additionalButtonClass}`}
+        {...restProps}
+      />
+    )
   }

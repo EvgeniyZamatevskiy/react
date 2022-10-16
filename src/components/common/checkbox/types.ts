@@ -1,6 +1,6 @@
 import {ChangeEvent, ReactNode} from "react"
 
-export type UniversalCheckboxPropsType = {
+export type CheckboxPropsType = {
   isPrimary?: boolean
   isSecondary?: boolean
   className?: string

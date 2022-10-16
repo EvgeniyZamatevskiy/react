@@ -1,5 +1,5 @@
 export type AlertPropsType = {
-  children?: any
-  type?: any
-  message?: any
+  message: string
+  onCloseAlertClick: () => void
+  type: "success" | "warning" | "error" | "info"
 }

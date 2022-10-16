@@ -1,7 +1,8 @@
-import { ReactNode } from 'react'
+import {ReactNode} from "react"
 
 export type CustomLinkPropsType = {
-	children: ReactNode
-	to: string
-	colorActiveLink: string
+  children: ReactNode
+  to: string
+  colorActiveLink: string
+  end?: boolean
 }

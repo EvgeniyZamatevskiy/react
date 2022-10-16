@@ -1,4 +1,4 @@
-import {ChangeEvent, FocusEvent, KeyboardEvent, Ref} from "react"
+import {ChangeEvent, FocusEvent, KeyboardEvent, Ref, SyntheticEvent} from "react"
 
 export type InputPropsType = {
   isPrimary?: boolean
@@ -12,6 +12,7 @@ export type InputPropsType = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void
+  onSelect?: (event: SyntheticEvent<HTMLInputElement>) => void
   setValue?: (value: string) => void
   onEnter?: () => void
   onEscape?: () => void

@@ -1,17 +1,24 @@
-import React, { FC, MouseEvent } from 'react'
-import { ReturnComponentType } from 'types'
-import { ModalPropsType } from './types'
-import style from './Modal.module.scss'
+import React, {FC, MouseEvent} from "react"
+import {ReturnComponentType} from "types"
+import {ModalPropsType} from "./types"
+import {EMPTY_STRING} from "constants/base"
+import close from "assets/icons/close.svg"
+import style from "./Modal.module.scss"
 
-export const Modal: FC<ModalPropsType> = ({ children, isModalActive, onDeactivateModalClick }): ReturnComponentType => {
+export const Modal: FC<ModalPropsType> = ({children, isActiveModal, onDeactivateModalClick}): ReturnComponentType => {
 
-	const onAscentCancellationClick = (event: MouseEvent<HTMLDivElement>): void => event.stopPropagation()
+  const overlayClass = `${style.overlay} ${style.animated} ${isActiveModal ? style.show : EMPTY_STRING}`
 
-	return (
-		<div className={`${style.modal} ${isModalActive && style.active}`} onClick={onDeactivateModalClick}>
-			<div className={style.content} onClick={onAscentCancellationClick}>
-				{children}
-			</div>
-		</div>
-	)
+  const onAscentCancellationClick = (event: MouseEvent<HTMLDivElement>): void => event.stopPropagation()
+
+  return (
+    <div className={overlayClass} onClick={onDeactivateModalClick}>
+      <div className={style.modal} onClick={onAscentCancellationClick}>
+        <button className={style.crossContainer} onClick={onDeactivateModalClick}>
+          <img src={close} alt="close"/>
+        </button>
+        {children}
+      </div>
+    </div>
+  )
 }

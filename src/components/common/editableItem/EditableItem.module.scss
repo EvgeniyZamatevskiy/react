@@ -1,10 +1,12 @@
-@import 'styles/sass/templates.scss';
+@import 'src/styles/sass/templates.scss';
 
 .editableItemBtn {
 
-	.pencilIcon {
-		margin-left: 5px;
-	}
+  .pencilIcon {
+    margin-left: 5px;
+  }
 }
 
-.updatedValueInput {}
+.updatedValueInput {
+  border: 1px solid black;
+}

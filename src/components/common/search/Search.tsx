@@ -6,7 +6,7 @@ import {SearchPropsType} from "./types"
 import {Button} from "../button"
 import {Input} from "../input"
 import search from "assets/icons/search.svg"
-import cross from "assets/icons/cross.svg"
+import close from "assets/icons/close.svg"
 import style from "./Search.module.scss"
 
 export const Search: FC<SearchPropsType> =
@@ -63,7 +63,7 @@ export const Search: FC<SearchPropsType> =
             className={style.resetSearchValueBtn}
             onClick={onResetSearchValueClick}
             disabled={isDisabled}>
-            <img className={style.crossIcon} src={cross} alt="cross"/>
+            <img className={style.crossIcon} src={close} alt="close"/>
           </Button>}
       </div>
     )
