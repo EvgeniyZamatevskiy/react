@@ -1,3 +1,3 @@
 export type FilePropsType = {
-	setFile: (file: File) => void
+  setFile: (file: File) => void
 }
