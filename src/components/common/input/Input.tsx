@@ -19,9 +19,9 @@ export const Input: FC<InputPropsType> = forwardRef(
    },
    ref): ReturnComponentType => {
 
-    const primaryClass = isPrimary ? `${style.primaryInput}` : EMPTY_STRING
-    const secondaryClass = isSecondary ? `${style.secondaryInput}` : EMPTY_STRING
-    const additionalClass = className ? className : EMPTY_STRING
+    const primaryInputClass = isPrimary ? `${style.primaryInput}` : EMPTY_STRING
+    const secondaryInputClass = isSecondary ? `${style.secondaryInput}` : EMPTY_STRING
+    const additionalInputClass = className ? className : EMPTY_STRING
 
     const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
       onChange && onChange(event)
@@ -39,7 +39,7 @@ export const Input: FC<InputPropsType> = forwardRef(
         onChange={onInputChange}
         onKeyDown={onInputKeyDown}
         ref={ref}
-        className={`${primaryClass} ${secondaryClass} ${additionalClass}`}
+        className={`${primaryInputClass} ${secondaryInputClass} ${additionalInputClass}`}
         {...restProps}
       />
     )
