@@ -56,14 +56,14 @@ export const EditableItem: FC<EditableItemPropsType> = ({currentTitle, updateTit
       {isEditMode
         ? <Input
           ref={inputRef}
-          className={style.updatedValueInput}
+          className={style.input}
           setValue={setUpdatedTitle}
           value={updatedTitle}
           onBlur={onUpdateTitleBlur}
           onKeyDown={onUpdateTitleKeyDown}
         />
 
-        : <Button className={style.editableItemBtn} onClick={onSetCurrentTitleClick}>
+        : <Button className={style.button} onClick={onSetCurrentTitleClick}>
           {currentTitle || "Set status"}
         </Button>}
     </>
