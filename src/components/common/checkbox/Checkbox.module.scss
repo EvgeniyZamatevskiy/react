@@ -1,20 +1,26 @@
 @import 'src/styles/sass/mixins.scss';
 
-.primaryLabel {
+.label {
   @include flex(row, stretch, center);
+  cursor: pointer;
 }
 
-.primaryCheckbox {
+.checkbox {
   appearance: none;
   width: 16px;
   height: 16px;
   border: 1.5px solid #000;
   border-radius: 4px;
+  cursor: pointer;
 
   &:checked {
     appearance: none;
     background-image: url('../../../assets/icons/primaryChecked.png');
     background-size: cover;
     background-position: center;
+  }
+
+  &:focus {
+
   }
 }

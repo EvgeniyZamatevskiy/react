@@ -1,13 +1,10 @@
-import {ChangeEvent, ReactNode} from "react"
+import { DetailedHTMLProps, InputHTMLAttributes } from "react"
 
-export type CheckboxPropsType = {
-  isPrimary?: boolean
-  isSecondary?: boolean
-  className?: string
+type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
+export type CheckboxPropsType = Omit<DefaultInputPropsType, "type"> & {
   labelClassName?: string
   spanClassName?: string
-  children?: ReactNode
-  checked?: boolean
   setChecked?: (checked: boolean) => void
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  variant?: string
 }
