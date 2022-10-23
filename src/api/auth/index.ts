@@ -1,8 +1,9 @@
-import {instance} from "api/config"
+import { instance } from "api/config"
+import { LoginDataType } from "./types"
 
 export const AUTH = {
   login() {
-    return instance.post("", {
+    return instance.post<LoginDataType>("", {
       params: {}
     })
   }

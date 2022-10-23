@@ -16,6 +16,7 @@ export const Input: FC<InputPropsType> = forwardRef(
      error,
      additionalErrorSpanClass,
      variant,
+     value,
      ...restProps
    },
    ref): ReturnComponentType => {
@@ -27,6 +28,7 @@ export const Input: FC<InputPropsType> = forwardRef(
     const errorSpanClass = style.errorSpan
     const additionalSpanClass = additionalErrorSpanClass ? additionalErrorSpanClass : EMPTY_STRING
     const errorSpanClasses = `${errorSpanClass} ${additionalSpanClass}`
+
 
     const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
       onChange && onChange(event)

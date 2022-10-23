@@ -1,1 +1,1 @@
-export { DoubleRange } from './DoubleRange'
+export { DoubleRange } from "./DoubleRange"

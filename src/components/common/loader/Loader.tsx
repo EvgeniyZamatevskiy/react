@@ -1,5 +1,5 @@
-import React, {FC} from "react"
-import {ReturnComponentType} from "types"
+import React, { FC } from "react"
+import { ReturnComponentType } from "types"
 import style from "./Loader.module.scss"
 
 export const Loader: FC = (): ReturnComponentType => {

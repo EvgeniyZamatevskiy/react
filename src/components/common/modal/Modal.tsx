@@ -1,7 +1,8 @@
-import React, {FC, MouseEvent} from "react"
-import {ReturnComponentType} from "types"
-import {ModalPropsType} from "./types"
-import {EMPTY_STRING} from "constants/base"
+import React, { FC, MouseEvent } from "react"
+import { ReturnComponentType } from "types"
+import { ModalPropsType } from "./types"
+import { EMPTY_STRING } from "constants/base"
+import { Button } from "components"
 import close from "assets/icons/close.svg"
 import style from "./Modal.module.scss"
 
@@ -14,9 +15,9 @@ export const Modal: FC<ModalPropsType> = ({children, isActiveModal, onDeactivate
   return (
     <div className={overlayClass} onClick={onDeactivateModalClick}>
       <div className={style.modal} onClick={onAscentCancellationClick}>
-        <button className={style.crossContainer} onClick={onDeactivateModalClick}>
+        <Button className={style.crossContainer} onClick={onDeactivateModalClick}>
           <img src={close} alt="close"/>
-        </button>
+        </Button>
         {children}
       </div>
     </div>

@@ -1,81 +1,105 @@
-import React, {ChangeEvent, FC, useEffect, useRef, useState} from "react"
-import {ReturnComponentType} from "types"
-import {DoubleRangePropsType} from "./types"
+import { ChangeEvent, FC, useCallback, useEffect, useState, useRef, MouseEvent } from "react"
+import { DoubleRangePropsType } from "./types"
+import { ReturnComponentType } from "types"
+import { EMPTY_STRING } from "constants/base"
 import style from "./DoubleRange.module.scss"
 
 export const DoubleRange: FC<DoubleRangePropsType> =
   ({
      min,
      max,
-     minDefaultValue,
-     maxDefaultValue,
-     isDisabled,
-     setMinValueMouseUp,
-     setMaxValueMouseUp,
-   }): ReturnComponentType => {
+     onChange,
+     setCurrentMinValue,
+     setCurrentMaxValue
+   }
+  ): ReturnComponentType => {
 
     const [minValue, setMinValue] = useState(min)
     const [maxValue, setMaxValue] = useState(max)
 
+    const minValueRef = useRef<HTMLInputElement>(null)
+    const maxValueRef = useRef<HTMLInputElement>(null)
     const rangeRef = useRef<HTMLDivElement>(null)
-    const isMounted = useRef(false)
+
+    const getPercent = useCallback((value: number): number => {
+      return Math.round(((value - min) / (max - min)) * 100)
+    }, [min, max])
 
     useEffect(() => {
-      if (isMounted.current) {
-        setMinValue(minDefaultValue)
-        setMaxValue(maxDefaultValue)
-      }
+      if (maxValueRef.current) {
+        const minPercent = getPercent(minValue)
+        const maxPercent = getPercent(Number(maxValueRef.current.value))
 
-      isMounted.current = true
-    }, [minDefaultValue, maxDefaultValue])
+        if (rangeRef.current) {
+          rangeRef.current.style.left = `${minPercent}%`
+          rangeRef.current.style.width = `${maxPercent - minPercent}%`
+        }
+      }
+    }, [minValue, getPercent])
+
+    useEffect(() => {
+      if (minValueRef.current) {
+        const minPercent = getPercent(Number(minValueRef.current.value))
+        const maxPercent = getPercent(maxValue)
+
+        if (rangeRef.current) {
+          rangeRef.current.style.width = `${maxPercent - minPercent}%`
+        }
+      }
+    }, [maxValue, getPercent])
+
+    useEffect(() => {
+      onChange && onChange({min: minValue, max: maxValue})
+    }, [minValue, maxValue, onChange])
 
     const onMinValueChange = (event: ChangeEvent<HTMLInputElement>): void => {
-      const currentValue = Math.min(Number(event.currentTarget.value), maxValue)
-      setMinValue(currentValue)
+      const value = Math.min(Number(event.target.value), maxValue - 1)
+      setMinValue(value)
+      event.target.value = value.toString()
     }
 
     const onMaxValueChange = (event: ChangeEvent<HTMLInputElement>): void => {
-      const currentValue = Math.max(Number(event.currentTarget.value), minValue)
-      setMaxValue(currentValue)
+      const value = Math.max(Number(event.target.value), minValue + 1)
+      setMaxValue(value)
+      event.target.value = value.toString()
     }
 
-    const onMinValueMouseUp = (): void => {
-      setMinValueMouseUp && setMinValueMouseUp(minValue)
+    const onMinValueMouseUp = (event: MouseEvent<HTMLInputElement>): void => {
+      setCurrentMinValue && setCurrentMinValue(Number(event.currentTarget.value))
     }
 
-    const onMaxValueMouseUp = (): void => {
-      setMaxValueMouseUp && setMaxValueMouseUp(maxValue)
+    const onMaxValueMouseUp = (event: MouseEvent<HTMLInputElement>): void => {
+      setCurrentMaxValue && setCurrentMaxValue(Number(event.currentTarget.value))
     }
 
     return (
       <div className={style.container}>
         <input
           type="range"
-          min={minDefaultValue}
-          max={maxDefaultValue}
+          min={min}
+          max={max}
           value={minValue}
+          ref={minValueRef}
           onChange={onMinValueChange}
-          className={`${style.thumb} ${style.thumbLeft}`}
           onMouseUp={onMinValueMouseUp}
-          disabled={isDisabled}
+          className={`${style.thumb} ${style.zIndex3} ${minValue > max - 100 ? style.zIndex5 : EMPTY_STRING}`}
         />
-
         <input
           type="range"
-          min={minDefaultValue}
-          max={maxDefaultValue}
+          min={min}
+          max={max}
           value={maxValue}
+          ref={maxValueRef}
           onChange={onMaxValueChange}
-          className={`${style.thumb} ${style.thumbRight}`}
           onMouseUp={onMaxValueMouseUp}
-          disabled={isDisabled}
+          className={`${style.thumb} ${style.zIndex4}`}
         />
 
         <div className={style.slider}>
-          <div className={style.track}></div>
-          <div ref={rangeRef} className={style.range}></div>
-          <div className={style.leftValue}>{minValue}</div>
-          <div className={style.rightValue}>{maxValue}</div>
+          <div className={style.sliderTrack}></div>
+          <div className={style.sliderRange} ref={rangeRef}></div>
+          <div className={style.sliderLeftValue}>{minValue}</div>
+          <div className={style.sliderRightValue}>{maxValue}</div>
         </div>
       </div>
     )

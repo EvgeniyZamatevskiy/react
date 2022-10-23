@@ -1,6 +1,7 @@
-import React, {FC, useEffect, useState} from "react"
-import {ReturnComponentType} from "types/ReturnComponentType"
-import {PaginationPropsType} from "./types"
+import React, { FC, useEffect, useState } from "react"
+import { PaginationPropsType } from "./types"
+import { Button } from "components"
+import { ReturnComponentType } from "types"
 import style from "./Pagination.module.scss"
 
 export const Pagination: FC<PaginationPropsType> =
@@ -30,9 +31,9 @@ export const Pagination: FC<PaginationPropsType> =
       const onSetPageClick = (): void => handleSetPageClick(p)
 
       return (
-        <button key={p} className={`${style.button} ${page === p && style.active}`} onClick={onSetPageClick}>
+        <Button key={p} className={`${style.button} ${page === p && style.active}`} onClick={onSetPageClick}>
           {p}
-        </button>
+        </Button>
       )
     })
 
@@ -47,10 +48,10 @@ export const Pagination: FC<PaginationPropsType> =
     return (
       <div className={style.pagination}>
         {portionNumber > 1 &&
-          <button className={style.button} onClick={onDecreasePortionNumberClick}>&laquo;</button>}
+          <Button className={style.button} onClick={onDecreasePortionNumberClick}>&laquo;</Button>}
         {pagesRender}
         {portionCount > portionNumber &&
-          <button className={style.button} onClick={onIncreasePortionNumberClick}>&raquo;</button>}
+          <Button className={style.button} onClick={onIncreasePortionNumberClick}>&raquo;</Button>}
       </div>
     )
   }

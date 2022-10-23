@@ -6,7 +6,7 @@ import { ROUTES } from "router"
 
 export const App: FC = (): ReturnComponentType => {
   return (
-    <div className="container">
+    <div className="app">
       <Suspense fallback={<Loader/>}>
         <Routes>
           {ROUTES.map(({path, element}) => <Route key={path} path={path} element={element}/>)}
