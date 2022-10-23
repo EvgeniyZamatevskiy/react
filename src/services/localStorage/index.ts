@@ -1,24 +1,24 @@
-export const setDataToLocalStorage = <T>(key: string, data: T): void => {
-  localStorage.setItem(key, JSON.stringify(data))
+export const saveState = <T>(key: string, state: T): void => {
+  localStorage.setItem(key, JSON.stringify(state))
 }
 
-export const getParseLocalStorageData = <T>(key: string, defaultData: T) => {
-  const data = localStorage.getItem(key)
+export const restoreState = <T>(key: string, defaultState: T) => {
+  const state = localStorage.getItem(key)
 
-  if (data !== null) {
-    defaultData = JSON.parse(data) as T
+  if (state !== null) {
+    defaultState = JSON.parse(state) as T
   }
 
-  return defaultData
+  return defaultState
 }
 
 // Example for React:
 // export const Example = () => {
 
-// 	const [counter, setCounter] = useState(getParseLocalStorageData<number>('counter', 0))
+// 	const [counter, setCounter] = useState(restoreState<number>('counter', 0))
 
 // 	useEffect(() => {
-// 		setDataToLocalStorage('counter', counter)
+// 		saveState('counter', counter)
 // 	}, [counter])
 
 // 	return (
@@ -37,7 +37,7 @@ export const getParseLocalStorageData = <T>(key: string, defaultData: T) => {
 // 	const counter = useSelector(selectCounter)
 
 // 	useEffect(() => {
-// 		dispatch(getCurrentCounterValueTC())
+// 		dispatch(restoreState())
 // 	}, [])
 
 // 	return (

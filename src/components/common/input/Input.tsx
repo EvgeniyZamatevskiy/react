@@ -23,8 +23,10 @@ export const Input: FC<InputPropsType> = forwardRef(
     const inputClass = variant ? style[variant] : style.input
     const additionalInputClass = className ? className : EMPTY_STRING
     const errorInputClass = error ? style.errorInput : EMPTY_STRING
+    const inputClasses = `${inputClass} ${additionalInputClass} ${errorInputClass}`
     const errorSpanClass = style.errorSpan
     const additionalSpanClass = additionalErrorSpanClass ? additionalErrorSpanClass : EMPTY_STRING
+    const errorSpanClasses = `${errorSpanClass} ${additionalSpanClass}`
 
     const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
       onChange && onChange(event)
@@ -46,10 +48,10 @@ export const Input: FC<InputPropsType> = forwardRef(
           onChange={onInputChange}
           onKeyDown={onInputKeyDown}
           ref={ref}
-          className={`${inputClass} ${additionalInputClass} ${errorInputClass}`}
+          className={inputClasses}
           {...restProps}
         />
-        {error && <span className={`${errorSpanClass} ${additionalSpanClass}`}>{error}</span>}
+        {error && <span className={errorSpanClasses}>{error}</span>}
       </div>
     )
   })

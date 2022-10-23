@@ -4,16 +4,18 @@ import { ButtonPropsType } from "./types"
 import { EMPTY_STRING } from "constants/base"
 import style from "./Button.module.scss"
 
-export const Button: FC<ButtonPropsType> = ({className, variant, disabled, ...restProps}): ReturnComponentType => {
+export const Button: FC<ButtonPropsType> =
+  ({
+     className,
+     variant,
+     disabled,
+     ...restProps
+   }): ReturnComponentType => {
 
-  const buttonClass = variant ? style[variant] : style.button
-  const additionalButtonClass = className ? className : EMPTY_STRING
-  const buttonDisabledClass = disabled ? style.disabled : EMPTY_STRING
+    const buttonClass = variant ? style[variant] : style.button
+    const additionalButtonClass = className ? className : EMPTY_STRING
+    const buttonDisabledClass = disabled ? style.disabled : EMPTY_STRING
+    const buttonClasses = `${buttonClass} ${additionalButtonClass} ${buttonDisabledClass}`
 
-  return (
-    <button
-      className={`${buttonClass} ${additionalButtonClass} ${buttonDisabledClass}`}
-      {...restProps}
-    />
-  )
-}
+    return <button className={buttonClasses}{...restProps}/>
+  }

@@ -1,9 +1,9 @@
-import React, {FC, KeyboardEvent, useEffect, useRef, useState} from "react"
-import {ReturnComponentType} from "types"
-import {EMPTY_STRING} from "constants/base"
-import {EditableItemPropsType} from "./types"
-import {Button, Input} from "components"
-import {Key} from "enums"
+import React, { FC, KeyboardEvent, useEffect, useRef, useState } from "react"
+import { ReturnComponentType } from "types"
+import { EMPTY_STRING } from "constants/base"
+import { EditableItemPropsType } from "./types"
+import { Button, Input } from "components"
+import { Key } from "enums"
 import style from "./EditableItem.module.scss"
 
 export const EditableItem: FC<EditableItemPropsType> = ({currentTitle, updateTitle}): ReturnComponentType => {

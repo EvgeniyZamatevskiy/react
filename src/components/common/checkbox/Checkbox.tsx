@@ -18,10 +18,13 @@ export const Checkbox: FC<CheckboxPropsType> =
 
     const checkboxClass = variant ? style[variant] : style.checkbox
     const additionalCheckboxClass = className ? className : EMPTY_STRING
+    const checkboxClasses = `${checkboxClass} ${additionalCheckboxClass}`
     const labelClass = children ? style.label : EMPTY_STRING
     const additionalLabelClass = children && labelClassName ? labelClassName : EMPTY_STRING
+    const labelClasses = `${labelClass} ${additionalLabelClass}`
     const spanClass = style.span
     const additionalSpanClass = spanClassName ? spanClassName : EMPTY_STRING
+    const spanClasses = `${spanClass} ${additionalSpanClass}`
 
     const onCheckboxChange = (event: ChangeEvent<HTMLInputElement>): void => {
       onChange && onChange(event)
@@ -30,15 +33,15 @@ export const Checkbox: FC<CheckboxPropsType> =
     }
 
     return (
-      <label className={`${labelClass} ${additionalLabelClass}`}>
+      <label className={labelClasses}>
         <input
           type="checkbox"
-          className={`${checkboxClass} ${additionalCheckboxClass}`}
+          className={checkboxClasses}
           style={children ? {marginRight: "9px"} : {}}
           onChange={onCheckboxChange}
           {...restProps}
         />
-        {children && <span className={`${spanClass} ${additionalSpanClass}`}>{children}</span>}
+        {children && <span className={spanClasses}>{children}</span>}
       </label>
     )
   }
