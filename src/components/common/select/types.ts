@@ -1,13 +1,10 @@
-import {ChangeEvent} from "react"
+import { DetailedHTMLProps, SelectHTMLAttributes } from "react"
 
-export type SelectPropsType = {
-  isPrimary?: boolean
-  isSecondary?: boolean
-  className?: string
+type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+
+export type SelectPropsType = DefaultSelectPropsType & {
+  options: any[]
+  setOption?: (option: any) => void
   optionClassName?: string
-  options: string[]
-  value: string
-  disabled?: boolean
-  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
-  setValue?: (value: string) => void
+  variant?: string
 }

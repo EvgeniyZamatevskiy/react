@@ -1,1 +1,1 @@
-export {DebouncedInput} from "./DebouncedInput"
+export { DebouncedInput } from "./DebouncedInput"

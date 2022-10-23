@@ -1,14 +1,11 @@
-import {ChangeEvent} from "react"
+import { DetailedHTMLProps, InputHTMLAttributes } from "react"
 
-export type UniversalRadioPropsType = {
-  isPrimary?: boolean
-  isSecondary?: boolean
-  className?: string
+type DefaultRadioPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
+export type UniversalRadioPropsType = DefaultRadioPropsType & {
   labelClassName?: string
-  options: string[]
-  name: string
-  value: string
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-  setValue?: (option: string) => void
-  setIndex?: (index: number) => void
+  spanClassName?: string
+  variant?: string
+  options: any[]
+  setOption?: (option: any) => void
 }

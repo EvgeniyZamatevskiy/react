@@ -1,50 +1,53 @@
-import React, {ChangeEvent, FC} from "react"
-import {ReturnComponentType} from "types"
-import {UniversalRadioPropsType} from "./types"
+import React, { ChangeEvent, FC } from "react"
+import { ReturnComponentType } from "types"
+import { UniversalRadioPropsType } from "./types"
+import { EMPTY_STRING } from "constants/base"
 import style from "./Radio.module.scss"
-import {EMPTY_STRING} from "constants/base"
 
 export const Radio: FC<UniversalRadioPropsType> =
   ({
-     isPrimary,
-     isSecondary,
      className,
      labelClassName,
      options,
      name,
      value,
      onChange,
-     setValue,
-     setIndex,
+     setOption,
+     variant,
+     spanClassName,
      ...restProps
    }): ReturnComponentType => {
 
-    const primaryRadioClass = isPrimary ? `${style.primaryRadio}` : EMPTY_STRING
-    const secondaryRadioClass = isSecondary ? `${style.secondaryRadio}` : EMPTY_STRING
+    const radioClass = variant ? style[variant] : style.radio
     const additionalRadioClass = className ? className : EMPTY_STRING
-    const primaryLabelClass = `${style.primaryLabel}`
+    const radioClasses = `${radioClass} ${additionalRadioClass}`
+    const labelClass = style.label
     const additionalLabelClass = labelClassName ? labelClassName : EMPTY_STRING
+    const labelClasses = `${labelClass} ${additionalLabelClass}`
+    const spanClass = style.span
+    const additionalSpanClass = spanClassName ? spanClassName : EMPTY_STRING
+    const spanClasses = `${spanClass} ${additionalSpanClass}`
 
-    const optionsRender = options.map((option, index) => {
+    const optionsRender = options.map(option => {
 
       const onRadioChange = (event: ChangeEvent<HTMLInputElement>): void => {
         onChange && onChange(event)
-        setValue && setValue(event.currentTarget.value)
-        setIndex && setIndex(index)
+
+        setOption && setOption(Number(event.currentTarget.value))
       }
 
       return (
-        <label key={index} className={`${primaryLabelClass} ${additionalLabelClass}`}>
+        <label key={option.id} className={labelClasses}>
           <input
-            className={`${primaryRadioClass} ${secondaryRadioClass} ${additionalRadioClass}`}
-            type="radio"
+            type={"radio"}
+            className={radioClasses}
             name={name}
-            value={option}
-            checked={option === value}
+            value={option.id}
+            checked={option.id === value}
             onChange={onRadioChange}
             {...restProps}
           />
-          {option}
+          <span className={spanClasses}>{option.value}</span>
         </label>
       )
     })

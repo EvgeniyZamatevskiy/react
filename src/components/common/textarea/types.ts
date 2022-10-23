@@ -1,19 +1,11 @@
-import {ChangeEvent, FocusEvent, KeyboardEvent, Ref, SyntheticEvent} from "react"
+import { DetailedHTMLProps, TextareaHTMLAttributes, Ref } from "react"
 
-export type TextareaPropsType = {
-  isPrimary?: boolean
-  isSecondary?: boolean
-  className?: string
-  type?: "text"
-  placeholder?: string
-  value?: string
-  autoFocus?: boolean
-  ref?: Ref<HTMLTextAreaElement>
-  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
-  onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void
-  onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void
-  onSelect?: (event: SyntheticEvent<HTMLTextAreaElement>) => void
+type DefaultTextareaPropsType = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
+
+export type TextareaPropsType = DefaultTextareaPropsType & {
   setValue?: (value: string) => void
   onEnter?: () => void
   onEscape?: () => void
+  variant?: string
+  ref?: Ref<HTMLTextAreaElement>
 }

@@ -1,42 +1,39 @@
-import React, {ChangeEvent, FC} from "react"
-import {ReturnComponentType} from "types"
-import {SelectPropsType} from "./types"
-import {EMPTY_STRING} from "constants/base"
+import React, { ChangeEvent, FC } from "react"
+import { ReturnComponentType } from "types"
+import { SelectPropsType } from "./types"
+import { EMPTY_STRING } from "constants/base"
 import style from "./Select.module.scss"
 
 export const Select: FC<SelectPropsType> =
   ({
-     isPrimary,
-     isSecondary,
      className,
      optionClassName,
      options,
      onChange,
-     setValue,
+     setOption,
+     variant,
      ...restProps
    }): ReturnComponentType => {
 
-    const primarySelectClass = isPrimary ? `${style.primarySelect}` : EMPTY_STRING
-    const secondarySelectClass = isSecondary ? `${style.secondarySelect}` : EMPTY_STRING
+    const selectClass = variant ? style[variant] : style.select
     const additionalSelectClass = className ? className : EMPTY_STRING
-    const primaryOptionClass = `${style.primaryOption}`
+    const selectClasses = `${selectClass} ${additionalSelectClass}`
+    const optionClass = style.option
     const additionalOptionClass = optionClassName ? optionClassName : EMPTY_STRING
+    const optionClasses = `${optionClass} ${additionalOptionClass}`
 
-    const optionsRender = options.map((option, index) => {
-      return <option className={`${primaryOptionClass} ${additionalOptionClass}`} key={index}>{option}</option>
+    const optionsRender = options.map((option) => {
+      return <option key={option.id} className={optionClasses} value={option.id}>{option.value}</option>
     })
 
     const onSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
       onChange && onChange(event)
-      setValue && setValue(event.currentTarget.value)
+
+      setOption && setOption(Number(event.currentTarget.value))
     }
 
     return (
-      <select
-        className={`${primarySelectClass} ${secondarySelectClass} ${additionalSelectClass}`}
-        onChange={onSelectChange}
-        {...restProps}
-      >
+      <select className={selectClasses} onChange={onSelectChange} {...restProps}>
         {optionsRender}
       </select>
     )

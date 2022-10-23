@@ -1,7 +1,7 @@
-import React, {FC} from "react"
-import {Link, useMatch} from "react-router-dom"
-import {ReturnComponentType} from "types"
-import {CustomLinkPropsType} from "./types"
+import React, { FC } from "react"
+import { Link, useMatch } from "react-router-dom"
+import { ReturnComponentType } from "types"
+import { CustomLinkPropsType } from "./types"
 
 export const CustomLink: FC<CustomLinkPropsType> =
   ({
