@@ -1,1 +1,1 @@
-export {ExampleContext} from "./ExampleContext/ExampleContext"
+export { ExampleContextProvider, ExampleContext } from "./ExampleContext"
