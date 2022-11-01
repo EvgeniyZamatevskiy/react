@@ -16,7 +16,6 @@ export const Input: FC<InputPropsType> = forwardRef(
      error,
      additionalErrorSpanClass,
      variant,
-     value,
      ...restProps
    },
    ref): ReturnComponentType => {
