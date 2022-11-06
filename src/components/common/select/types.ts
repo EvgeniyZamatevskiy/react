@@ -4,7 +4,7 @@ type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectE
 
 export type SelectPropsType = DefaultSelectPropsType & {
   options: any[]
-  setOption?: (option: any) => void
+  setValue?: (value: any) => void
   optionClassName?: string
   variant?: string
 }

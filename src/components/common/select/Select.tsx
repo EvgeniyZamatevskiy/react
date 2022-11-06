@@ -10,7 +10,8 @@ export const Select: FC<SelectPropsType> =
      optionClassName,
      options,
      onChange,
-     setOption,
+     setValue,
+     defaultValue,
      variant,
      ...restProps
    }): ReturnComponentType => {
@@ -22,18 +23,19 @@ export const Select: FC<SelectPropsType> =
     const additionalOptionClass = optionClassName ? optionClassName : EMPTY_STRING
     const optionClasses = `${optionClass} ${additionalOptionClass}`
 
-    const optionsRender = options.map((option) => {
-      return <option key={option.id} className={optionClasses} value={option.id}>{option.value}</option>
-    })
-
     const onSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-      onChange && onChange(event)
+      setValue && setValue(Number(event.currentTarget.value))
 
-      setOption && setOption(Number(event.currentTarget.value))
+      onChange && onChange(event)
     }
+
+    const optionsRender = options.map(({id, name}) => {
+      return <option key={id} className={optionClasses} value={id}>{name}</option>
+    })
 
     return (
       <select className={selectClasses} onChange={onSelectChange} {...restProps}>
+        {defaultValue && <option value={0} disabled>{defaultValue}</option>}
         {optionsRender}
       </select>
     )

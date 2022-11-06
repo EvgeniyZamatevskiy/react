@@ -2,7 +2,7 @@ import React, { FC, KeyboardEvent, useEffect, useRef, useState } from "react"
 import { ReturnComponentType } from "types"
 import { EMPTY_STRING } from "constants/base"
 import { EditableItemPropsType } from "./types"
-import { Button, Input } from "components"
+import { Input } from "components"
 import { Key } from "enums"
 import style from "./EditableItem.module.scss"
 
@@ -12,12 +12,6 @@ export const EditableItem: FC<EditableItemPropsType> = ({currentTitle, updateTit
   const [updatedTitle, setUpdatedTitle] = useState(EMPTY_STRING)
 
   const inputRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (isEditMode) {
-      inputRef.current?.select()
-    }
-  }, [isEditMode])
 
   const onSetCurrentTitleClick = (): void => {
     setIsEditMode(true)
@@ -51,6 +45,12 @@ export const EditableItem: FC<EditableItemPropsType> = ({currentTitle, updateTit
     }
   }
 
+  useEffect(() => {
+    if (isEditMode) {
+      inputRef.current?.select()
+    }
+  }, [isEditMode])
+
   return (
     <>
       {isEditMode
@@ -63,9 +63,9 @@ export const EditableItem: FC<EditableItemPropsType> = ({currentTitle, updateTit
           onKeyDown={onUpdateTitleKeyDown}
         />
 
-        : <Button className={style.button} onClick={onSetCurrentTitleClick}>
+        : <span className={style.span} onClick={onSetCurrentTitleClick}>
           {currentTitle || "Set status"}
-        </Button>}
+        </span>}
     </>
   )
 }
