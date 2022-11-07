@@ -1,8 +1,8 @@
-export const saveState = <T>(key: string, state: T): void => {
+export const setToLocalStorage = <T>(key: string, state: T): void => {
   localStorage.setItem(key, JSON.stringify(state))
 }
 
-export const restoreState = <T>(key: string, defaultState: T) => {
+export const getFromLocalStorage = <T>(key: string, defaultState: T) => {
   const state = localStorage.getItem(key)
 
   if (state !== null) {
