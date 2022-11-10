@@ -1,8 +1,4 @@
-import {createContext} from "react"
-
-export type ExampleContextType = {
-  count: number
-  setCount: (count: number) => void
-}
+import { createContext } from "react"
+import { ExampleContextType } from "./types"
 
 export const ExampleContext = createContext<ExampleContextType>({} as ExampleContextType)

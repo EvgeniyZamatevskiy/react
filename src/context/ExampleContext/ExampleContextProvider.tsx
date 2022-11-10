@@ -1,20 +1,17 @@
-import {FC, useState} from "react"
-import {ReturnComponentType} from "types"
-import {ExampleContext} from "./ExampleContext"
+import { FC, useMemo, useState } from "react"
+import { ExampleContext } from "./ExampleContext"
+import { ExampleContextProviderPropsType } from "./types"
 
-type ExampleContextProviderPropsType = {
-  children: JSX.Element | JSX.Element[]
-}
+export const ExampleContextProvider: FC<ExampleContextProviderPropsType> = ({children}) => {
 
-export const ExampleContextProvider: FC<ExampleContextProviderPropsType> = ({children}): ReturnComponentType => {
+  const [count, setCount] = useState(0)
 
-  const [count, setCount] = useState<number>(0)
+  const value = useMemo(() => {
+    return {count, setCount}
+  }, [count])
 
   return (
-    <ExampleContext.Provider value={{
-      count,
-      setCount
-    }}>
+    <ExampleContext.Provider value={value}>
       {children}
     </ExampleContext.Provider>
   )
