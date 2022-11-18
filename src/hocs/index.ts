@@ -1,1 +1,1 @@
-export {WithRequireAuth} from "./withRequireAuth"
+export { WithRequireAuth } from "./withRequireAuth"

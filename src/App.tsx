@@ -1,17 +1,12 @@
-import React, { FC, Suspense } from "react"
+import React, { FC } from "react"
+import { AppRouter, Header } from "components"
 import { ReturnComponentType } from "types"
-import { Route, Routes } from "react-router-dom"
-import { Loader } from "components"
-import { ROUTES } from "router"
 
 export const App: FC = (): ReturnComponentType => {
   return (
     <div className="app">
-      <Suspense fallback={<Loader/>}>
-        <Routes>
-          {ROUTES.map(({path, element}) => <Route key={path} path={path} element={element}/>)}
-        </Routes>
-      </Suspense>
+      <Header/>
+      <AppRouter/>
     </div>
   )
 }

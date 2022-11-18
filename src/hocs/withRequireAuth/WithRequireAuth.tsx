@@ -1,7 +1,7 @@
-import React, {FC} from "react"
-import {Navigate, useLocation} from "react-router-dom"
-import {ReturnComponentType} from "types"
-import {RequireAuthPropsType} from "./types"
+import React, { FC } from "react"
+import { Navigate, useLocation } from "react-router-dom"
+import { ReturnComponentType } from "types"
+import { RequireAuthPropsType } from "./types"
 
 export const WithRequireAuth: FC<RequireAuthPropsType> = ({children}): ReturnComponentType => {
 

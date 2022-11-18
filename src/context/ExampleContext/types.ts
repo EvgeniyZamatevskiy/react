@@ -1,4 +1,4 @@
-import { SetStateType } from "App"
+import { SetStateType } from "types"
 
 export type ExampleContextType = {
   count: number

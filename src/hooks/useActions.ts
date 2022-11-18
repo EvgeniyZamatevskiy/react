@@ -1,6 +1,6 @@
-import {useMemo} from "react"
-import {ActionCreatorsMapObject, bindActionCreators} from "redux"
-import {useAppDispatch} from "./useAppDispatch"
+import { useMemo } from "react"
+import { ActionCreatorsMapObject, bindActionCreators } from "redux"
+import { useAppDispatch } from "./useAppDispatch"
 
 export const useActions = <T extends ActionCreatorsMapObject<any>>(actions: T) => {
   const dispatch = useAppDispatch()

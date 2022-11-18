@@ -1,24 +1,23 @@
-import {createAsyncThunk} from "@reduxjs/toolkit"
-import {AUTH} from "api"
-import {RootStateType} from "store"
+import { createAsyncThunk } from "@reduxjs/toolkit"
+import { AUTH } from "api"
+import { RootStateType } from "store"
 
-export const asyncAction = createAsyncThunk<void, undefined, { rejectValue: { error: string }, state: RootStateType }>
+export const asyncAction = createAsyncThunk<void, undefined, { rejectValue: string, state: RootStateType }>
 ("app/asyncAction", async (_, {rejectWithValue, getState, dispatch}) => {
 
   const state = getState()
 
   try {
-    const response = await AUTH.login()
-    const {data: items} = response
+    const {data: items} = await AUTH.login()
 
     return items
   } catch (error: any) {
-    return rejectWithValue({error: error.message})
+    return rejectWithValue(error.message)
   }
 })
 
 // localStorage:
-// export const counterIncrease = createAsyncThunk<number, undefined, { rejectValue: { error: string }, state: RootStateType }>
+// export const counterIncrease = createAsyncThunk<number, undefined, { rejectValue: string, state: RootStateType }>
 // ("app/counterIncrease", (_, {rejectWithValue, getState}) => {
 //
 //   const counter = getState().app.counter
@@ -28,11 +27,11 @@ export const asyncAction = createAsyncThunk<void, undefined, { rejectValue: { er
 //
 //     return counter
 //   } catch (error: any) {
-//     return rejectWithValue({error: error.message})
+//     return rejectWithValue(error.message)
 //   }
 // })
-//
-// export const getCurrentCounterValue = createAsyncThunk<number, undefined, { rejectValue: { error: string }, state: RootStateType }>
+
+// export const getCurrentCounterValue = createAsyncThunk<number, undefined, { rejectValue: string, state: RootStateType }>
 // ("app/getCurrentCounterValue", (_, {rejectWithValue}) => {
 //
 //   try {
@@ -40,6 +39,6 @@ export const asyncAction = createAsyncThunk<void, undefined, { rejectValue: { er
 //
 //     return counter
 //   } catch (error: any) {
-//     return rejectWithValue({error: error.message})
+//     return rejectWithValue(error.message)
 //   }
 // })

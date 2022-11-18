@@ -1,12 +1,13 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit"
-import {EMPTY_STRING} from "constants/base"
-import {asyncAction} from "store/asyncActions"
-import {AppSliceInitialStateType} from "./types"
-import {isErrorRejected} from "store/helpers"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { EMPTY_STRING } from "constants/base"
+import { asyncAction } from "store/asyncActions"
+import { AppSliceInitialStateType } from "./types"
+import { isActionTypeRejected } from "store/predicates"
 
 const initialState: AppSliceInitialStateType = {
-  isLoading: false,
+  loadingStatus: "idle",
   errorMessage: EMPTY_STRING,
+  isInitialized: false
 }
 
 const appSlice = createSlice({
@@ -19,13 +20,18 @@ const appSlice = createSlice({
   },
   extraReducers(builder) {
     builder
+      .addCase(asyncAction.pending, (state, action) => {
+
+      })
+      .addCase(asyncAction.rejected, (state, action) => {
+
+      })
       .addCase(asyncAction.fulfilled, (state, action) => {
 
       })
-      .addMatcher(isErrorRejected, (state, action: PayloadAction<{ error: string }>) => {
-        state.errorMessage = action.payload.error
+      .addMatcher(isActionTypeRejected, (state, action: PayloadAction<string>) => {
+        state.errorMessage = action.payload
       })
-
   },
 })
 
