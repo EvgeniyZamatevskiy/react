@@ -17,5 +17,5 @@ export const Button: FC<ButtonPropsType> =
     const buttonDisabledClass = disabled ? classes.disabled : EMPTY_STRING
     const buttonClasses = `${buttonClass} ${additionalButtonClass} ${buttonDisabledClass}`
 
-    return <button className={buttonClasses}{...restProps}/>
+    return <button className={buttonClasses} {...restProps}/>
   }
