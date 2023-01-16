@@ -1,21 +1,20 @@
-import { useState } from "react"
-import { EMPTY_STRING } from "constants/base"
+import { useState } from "react";
 
 export const useFetching = (callback: () => void) => {
 
-  const [isLoading, setIsLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(EMPTY_STRING)
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const query = async () => {
     try {
-      setIsLoading(true)
-      await callback()
+      setIsLoading(true);
+      await callback();
     } catch (error: any) {
-      setErrorMessage(error.message)
+      setErrorMessage(error.message);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
-  return [query, isLoading, errorMessage] as const
-}
+  return [query, isLoading, errorMessage] as const;
+};

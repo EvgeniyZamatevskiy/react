@@ -1,55 +1,52 @@
-import React, { FC, KeyboardEvent, useEffect, useRef, useState } from "react"
-import { ReturnComponentType } from "types"
-import { EMPTY_STRING } from "constants/base"
-import { EditableItemPropsType } from "./types"
-import { Input } from "components"
-import { Key } from "enums"
-import classes from "./index.module.scss"
+import React, { FC, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { EditableItemPropsType } from "./types";
+import { Input } from "components";
+import classes from "./index.module.scss";
 
-export const EditableItem: FC<EditableItemPropsType> = ({currentTitle, updateTitle}): ReturnComponentType => {
+export const EditableItem: FC<EditableItemPropsType> = ({ currentTitle, updateTitle }) => {
 
-  const [isEditMode, setIsEditMode] = useState(false)
-  const [updatedTitle, setUpdatedTitle] = useState(EMPTY_STRING)
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [updatedTitle, setUpdatedTitle] = useState("");
 
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onSetCurrentTitleClick = (): void => {
-    setIsEditMode(true)
-    setUpdatedTitle(currentTitle)
-  }
+    setIsEditMode(true);
+    setUpdatedTitle(currentTitle);
+  };
 
   const handleUpdateTitleBlurOrKeyDown = (): void => {
-    setIsEditMode(false)
+    setIsEditMode(false);
 
-    const updatedTitleTrimmed = updatedTitle.replace(/\s+/g, " ").trim()
+    const updatedTitleTrimmed = updatedTitle.replace(/\s+/g, " ").trim();
 
     if (currentTitle !== updatedTitleTrimmed) {
-      updateTitle(updatedTitleTrimmed)
+      updateTitle(updatedTitleTrimmed);
     }
-  }
+  };
 
   const onUpdateTitleBlur = (): void => {
-    handleUpdateTitleBlurOrKeyDown()
-  }
+    handleUpdateTitleBlurOrKeyDown();
+  };
 
   const onUpdateTitleKeyDown = (event: KeyboardEvent<HTMLInputElement>): void => {
-    if (event.key === Key.ENTER) {
+    if (event.key === "Enter") {
 
-      handleUpdateTitleBlurOrKeyDown()
-      return
+      handleUpdateTitleBlurOrKeyDown();
+      return;
     }
 
-    if (event.key === Key.ESCAPE) {
-      setIsEditMode(false)
-      return
+    if (event.key === "Escape") {
+      setIsEditMode(false);
+      return;
     }
-  }
+  };
 
   useEffect(() => {
     if (isEditMode) {
-      inputRef.current?.select()
+      inputRef.current?.select();
     }
-  }, [isEditMode])
+  }, [isEditMode]);
 
   return (
     <>
@@ -67,5 +64,5 @@ export const EditableItem: FC<EditableItemPropsType> = ({currentTitle, updateTit
           {currentTitle || "Set status"}
         </span>}
     </>
-  )
-}
+  );
+};

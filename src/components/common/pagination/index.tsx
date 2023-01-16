@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useState } from "react"
-import { PaginationPropsType } from "./types"
-import { Button } from "components"
-import { ReturnComponentType } from "types"
-import { usePages } from "hooks"
-import classes from "./index.module.scss"
+import React, { FC, useEffect, useState } from "react";
+import { PaginationPropsType } from "./types";
+import { Button } from "components";
+import { usePages } from "hooks";
+import classes from "./index.module.scss";
 
 export const Pagination: FC<PaginationPropsType> =
   ({
@@ -12,35 +11,35 @@ export const Pagination: FC<PaginationPropsType> =
      page,
      handleSetPageClick,
      portionSize = 10
-   }): ReturnComponentType => {
+   }) => {
 
-    const [portionNumber, setPortionNumber] = useState(1)
+    const [portionNumber, setPortionNumber] = useState(1);
 
-    const pagesCount = Math.ceil(totalItemsCount / pageCount)
-    const pages = usePages(pagesCount)
+    const pagesCount = Math.ceil(totalItemsCount / pageCount);
+    const pages = usePages(pagesCount);
 
-    const portionCount = Math.ceil(pagesCount / portionSize)
-    const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
-    const rightPortionPageNumber = portionNumber * portionSize
-    const pagesFiltered = pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+    const portionCount = Math.ceil(pagesCount / portionSize);
+    const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
+    const rightPortionPageNumber = portionNumber * portionSize;
+    const pagesFiltered = pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber);
     const pagesRender = pagesFiltered.map(p => {
 
-      const onSetPageClick = (): void => handleSetPageClick(p)
+      const onSetPageClick = (): void => handleSetPageClick(p);
 
       return (
         <Button key={p} className={`${classes.button} ${page === p && classes.active}`} onClick={onSetPageClick}>
           {p}
         </Button>
-      )
-    })
+      );
+    });
 
-    const onDecreasePortionNumberClick = (): void => setPortionNumber(portionNumber - 1)
+    const onDecreasePortionNumberClick = (): void => setPortionNumber(portionNumber - 1);
 
-    const onIncreasePortionNumberClick = (): void => setPortionNumber(portionNumber + 1)
+    const onIncreasePortionNumberClick = (): void => setPortionNumber(portionNumber + 1);
 
     useEffect(() => {
-      setPortionNumber(Math.ceil(page / portionSize))
-    }, [page])
+      setPortionNumber(Math.ceil(page / portionSize));
+    }, [page]);
 
     return (
       <div className={classes.pagination}>
@@ -50,5 +49,5 @@ export const Pagination: FC<PaginationPropsType> =
         {portionCount > portionNumber &&
           <Button className={classes.button} onClick={onIncreasePortionNumberClick}>&raquo;</Button>}
       </div>
-    )
-  }
+    );
+  };

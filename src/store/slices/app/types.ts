@@ -1,7 +1,7 @@
 export type AppSliceInitialStateType = {
   loadingStatus: LoadingStatusType
   errorMessage: string
-  isInitialized: false
+  isInitialized: boolean
 }
 
 export type LoadingStatusType = "idle" | "loading" | "succeeded" | "failed"

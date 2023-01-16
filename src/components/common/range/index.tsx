@@ -1,8 +1,6 @@
-import React, { ChangeEvent, MouseEvent } from "react"
-import { RangePropsType } from "components/common/range/types"
-import { ReturnComponentType } from "types"
-import { EMPTY_STRING } from "constants/base"
-import classes from "./index.module.scss"
+import React, { ChangeEvent, MouseEvent } from "react";
+import { RangePropsType } from "components/common/range/types";
+import classes from "./index.module.scss";
 
 export const Range: React.FC<RangePropsType> =
   ({
@@ -13,23 +11,23 @@ export const Range: React.FC<RangePropsType> =
      className,
      variant,
      ...restProps
-   }): ReturnComponentType => {
+   }) => {
 
-    const rangeClass = variant ? classes[variant] : classes.range
-    const additionalRangeClass = className ? className : EMPTY_STRING
-    const rangeClasses = `${rangeClass} ${additionalRangeClass}`
+    const rangeClass = variant ? classes[variant] : classes.range;
+    const additionalRangeClass = className ? className : "";
+    const rangeClasses = `${rangeClass} ${additionalRangeClass}`;
 
     const onRangeChange = (event: ChangeEvent<HTMLInputElement>): void => {
-      onChange && onChange(event)
+      onChange && onChange(event);
 
-      setValue && setValue(Number(event.currentTarget.value))
-    }
+      setValue && setValue(Number(event.currentTarget.value));
+    };
 
     const onRangeMouseUp = (event: MouseEvent<HTMLInputElement>): void => {
-      onMouseUp && onMouseUp(event)
+      onMouseUp && onMouseUp(event);
 
-      setCurrentValue && setCurrentValue(Number(event.currentTarget.value))
-    }
+      setCurrentValue && setCurrentValue(Number(event.currentTarget.value));
+    };
 
     return (
       <input
@@ -37,6 +35,6 @@ export const Range: React.FC<RangePropsType> =
         className={rangeClasses}
         onChange={onRangeChange}
         onMouseUp={onRangeMouseUp}
-        {...restProps}/>
-    )
-  }
+        {...restProps} />
+    );
+  };

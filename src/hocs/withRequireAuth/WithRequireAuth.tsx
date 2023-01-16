@@ -1,39 +1,38 @@
-import React, { FC } from "react"
-import { Navigate, useLocation } from "react-router-dom"
-import { ReturnComponentType } from "types"
-import { RequireAuthPropsType } from "./types"
+import React, { FC, ReactElement } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { RequireAuthPropsType } from "./types";
 
-export const WithRequireAuth: FC<RequireAuthPropsType> = ({children}): ReturnComponentType => {
+export const WithRequireAuth: FC<RequireAuthPropsType> = ({ children }) => {
 
-  const location = useLocation()
+  const location = useLocation();
 
-  const isAuth = false
+  const isAuth = false;
 
   if (!isAuth) {
-    return <Navigate to={"/login"} state={{from: location}}/>
+    return <Navigate to={"/login"} state={{ from: location }} />;
   }
 
-  return <>{children}</>
-}
+  return <>{children}</>;
+};
 
 // или
-// export const WithRequireAuth = (Component: () => ReturnComponentType) => {
-
-// 	const NavigateComponent = () => {
-
-// 		const location = useLocation()
-
-// 		const isAuth = false
-
-// 		if (!isAuth) {
-// 			return <Navigate to={"/login"} state={{ from: location }} />
-// 		}
-
-// 		return <Component />
-// 	}
-
-// 	return NavigateComponent
-// }
+// export const WithRequireAuth = (Component: () => ReactElement) => {
+//
+//   const NavigateComponent = () => {
+//
+//     const location = useLocation();
+//
+//     const isAuth = false;
+//
+//     if (!isAuth) {
+//       return <Navigate to={"/login"} state={{ from: location }} />;
+//     }
+//
+//     return <Component />;
+//   };
+//
+//   return NavigateComponent;
+// };
 
 
 // Использование в компоненте Login:

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 type OutsideType = {
   ref: any
@@ -7,22 +7,20 @@ type OutsideType = {
 }
 
 export const useOutside = (initialIsVisible: boolean): OutsideType => {
-  const [isShow, setIsShow] = useState(initialIsVisible)
-  const ref = useRef<HTMLElement>(null)
+  const [isShow, setIsShow] = useState(initialIsVisible);
+  const ref = useRef<HTMLElement>(null);
 
   const handleClickOutside = (event: any): void => {
     if (ref.current && !ref.current.contains(event.target)) {
-      setIsShow(false)
+      setIsShow(false);
     }
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside, true)
+    document.addEventListener("click", handleClickOutside, true);
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside, true)
-    }
-  }, [])
+    return () => document.removeEventListener("click", handleClickOutside, true);
+  }, []);
 
-  return {ref, isShow, setIsShow}
-}
+  return { ref, isShow, setIsShow };
+};

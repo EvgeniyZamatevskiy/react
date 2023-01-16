@@ -1,8 +1,6 @@
-import React, { ChangeEvent, FC } from "react"
-import { ReturnComponentType } from "types"
-import { CheckboxPropsType } from "./types"
-import { EMPTY_STRING } from "constants/base"
-import classes from "./index.module.scss"
+import React, { ChangeEvent, FC } from "react";
+import { CheckboxPropsType } from "./types";
+import classes from "./index.module.scss";
 
 export const Checkbox: FC<CheckboxPropsType> =
   ({
@@ -14,34 +12,34 @@ export const Checkbox: FC<CheckboxPropsType> =
      setChecked,
      variant,
      ...restProps
-   }): ReturnComponentType => {
+   }) => {
 
-    const checkboxClass = variant ? classes[variant] : classes.checkbox
-    const additionalCheckboxClass = className ? className : EMPTY_STRING
-    const checkboxClasses = `${checkboxClass} ${additionalCheckboxClass}`
-    const labelClass = children ? classes.label : EMPTY_STRING
-    const additionalLabelClass = children && labelClassName ? labelClassName : EMPTY_STRING
-    const labelClasses = `${labelClass} ${additionalLabelClass}`
-    const spanClass = classes.span
-    const additionalSpanClass = spanClassName ? spanClassName : EMPTY_STRING
-    const spanClasses = `${spanClass} ${additionalSpanClass}`
+    const checkboxClass = variant ? classes[variant] : classes.checkbox;
+    const additionalCheckboxClass = className ? className : "";
+    const checkboxClasses = `${checkboxClass} ${additionalCheckboxClass}`;
+    const labelClass = children ? classes.label : "";
+    const additionalLabelClass = children && labelClassName ? labelClassName : "";
+    const labelClasses = `${labelClass} ${additionalLabelClass}`;
+    const spanClass = classes.span;
+    const additionalSpanClass = spanClassName ? spanClassName : "";
+    const spanClasses = `${spanClass} ${additionalSpanClass}`;
 
     const onCheckboxChange = (event: ChangeEvent<HTMLInputElement>): void => {
-      onChange && onChange(event)
+      onChange && onChange(event);
 
-      setChecked && setChecked(event.currentTarget.checked)
-    }
+      setChecked && setChecked(event.currentTarget.checked);
+    };
 
     return (
       <label className={labelClasses}>
         <input
           type="checkbox"
           className={checkboxClasses}
-          style={children ? {marginRight: "9px"} : {}}
+          style={children ? { marginRight: "9px" } : {}}
           onChange={onCheckboxChange}
           {...restProps}
         />
         {children && <span className={spanClasses}>{children}</span>}
       </label>
-    )
-  }
+    );
+  };

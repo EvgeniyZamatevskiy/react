@@ -1,9 +1,6 @@
-import React, { ChangeEvent, KeyboardEvent, FC, forwardRef } from "react"
-import { ReturnComponentType } from "types"
-import { TextareaPropsType } from "./types"
-import { Key } from "enums"
-import { EMPTY_STRING } from "constants/base"
-import classes from "./index.module.scss"
+import React, { ChangeEvent, KeyboardEvent, FC, forwardRef } from "react";
+import { TextareaPropsType } from "./types";
+import classes from "./index.module.scss";
 
 export const Textarea: FC<TextareaPropsType> = forwardRef(
   ({
@@ -16,24 +13,24 @@ export const Textarea: FC<TextareaPropsType> = forwardRef(
      variant,
      ...restProps
    },
-   ref): ReturnComponentType => {
+   ref) => {
 
-    const textareaClass = variant ? classes[variant] : classes.textarea
-    const additionalTextareaClass = className ? className : EMPTY_STRING
-    const textareaClasses = `${textareaClass} ${additionalTextareaClass}`
+    const textareaClass = variant ? classes[variant] : classes.textarea;
+    const additionalTextareaClass = className ? className : "";
+    const textareaClasses = `${textareaClass} ${additionalTextareaClass}`;
 
     const onTextareaChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-      onChange && onChange(event)
+      onChange && onChange(event);
 
-      setValue && setValue(event.currentTarget.value)
-    }
+      setValue && setValue(event.currentTarget.value);
+    };
 
     const onTextareaKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>): void => {
-      onKeyDown && onKeyDown(event)
+      onKeyDown && onKeyDown(event);
 
-      onEnter && event.key === Key.ENTER && onEnter()
-      onEscape && event.key === Key.ESCAPE && onEscape()
-    }
+      onEnter && event.key === "Enter" && onEnter();
+      onEscape && event.key === "Escape" && onEscape();
+    };
 
     return (
       <textarea
@@ -43,5 +40,5 @@ export const Textarea: FC<TextareaPropsType> = forwardRef(
         className={textareaClasses}
         {...restProps}
       />
-    )
-  })
+    );
+  });

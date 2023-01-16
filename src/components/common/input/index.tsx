@@ -1,9 +1,6 @@
-import React, { ChangeEvent, FC, forwardRef, KeyboardEvent } from "react"
-import { Key } from "enums"
-import { ReturnComponentType } from "types"
-import { InputPropsType } from "./types"
-import { EMPTY_STRING } from "constants/base"
-import classes from "./index.module.scss"
+import React, { ChangeEvent, FC, forwardRef, KeyboardEvent } from "react";
+import { InputPropsType } from "./types";
+import classes from "./index.module.scss";
 
 export const Input: FC<InputPropsType> = forwardRef(
   ({
@@ -18,29 +15,29 @@ export const Input: FC<InputPropsType> = forwardRef(
      variant,
      ...restProps
    },
-   ref): ReturnComponentType => {
+   ref) => {
 
-    const inputClass = variant ? classes[variant] : classes.input
-    const additionalInputClass = className ? className : EMPTY_STRING
-    const errorInputClass = error ? classes.errorInput : EMPTY_STRING
-    const inputClasses = `${inputClass} ${additionalInputClass} ${errorInputClass}`
-    const errorSpanClass = classes.errorSpan
-    const additionalSpanClass = additionalErrorSpanClass ? additionalErrorSpanClass : EMPTY_STRING
-    const errorSpanClasses = `${errorSpanClass} ${additionalSpanClass}`
+    const inputClass = variant ? classes[variant] : classes.input;
+    const additionalInputClass = className ? className : "";
+    const errorInputClass = error ? classes.errorInput : "";
+    const inputClasses = `${inputClass} ${additionalInputClass} ${errorInputClass}`;
+    const errorSpanClass = classes.errorSpan;
+    const additionalSpanClass = additionalErrorSpanClass ? additionalErrorSpanClass : "";
+    const errorSpanClasses = `${errorSpanClass} ${additionalSpanClass}`;
 
 
     const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-      onChange && onChange(event)
+      onChange && onChange(event);
 
-      setValue && setValue(event.currentTarget.value)
-    }
+      setValue && setValue(event.currentTarget.value);
+    };
 
     const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>): void => {
-      onKeyDown && onKeyDown(event)
+      onKeyDown && onKeyDown(event);
 
-      onEnter && event.key === Key.ENTER && onEnter()
-      onEscape && event.key === Key.ESCAPE && onEscape()
-    }
+      onEnter && event.key === "Enter" && onEnter();
+      onEscape && event.key === "Escape" && onEscape();
+    };
 
     return (
       <div className={classes.container}>
@@ -54,5 +51,5 @@ export const Input: FC<InputPropsType> = forwardRef(
         />
         {error && <span className={errorSpanClasses}>{error}</span>}
       </div>
-    )
-  })
+    );
+  });

@@ -1,12 +1,8 @@
-import React, { FC } from "react"
-import { AppRouter, Header } from "components"
-import { ReturnComponentType } from "types"
+import React, { FC } from "react";
+import { AppRouter } from "components";
 
-export const App: FC = (): ReturnComponentType => {
-  return (
-    <div className="app">
-      <Header/>
-      <AppRouter/>
-    </div>
-  )
-}
+export const App: FC = () => (
+  <div className="app">
+    <AppRouter />
+  </div>
+);
