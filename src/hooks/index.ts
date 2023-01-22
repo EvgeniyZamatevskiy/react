@@ -11,3 +11,4 @@ export { useSortedUsers } from "./useSortedUsers";
 export { useSearchedUsers } from "./useSearchedUsers";
 export { useScroll } from "./useScroll";
 export { useFallbackImg } from "./useFallbackImg";
+export { useActiveButton } from "./useActiveButton";
