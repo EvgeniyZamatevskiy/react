@@ -5,26 +5,58 @@ import { TD } from "./TD";
 
 type TBodyPropsType = {
   items: ItemType[]
+  additionalTitleOne?: string
+  additionalTitleTwo?: string
+  additionalTitleThree?: string
 }
 
-export const TBody: FC<TBodyPropsType> = ({ items }) => {
-  return (
-    <tbody>
-    {items.map((item) => {
-      const { id, previousFloor, currentFloor, collection, change, pl, holdings, amountSpent } = item;
+export const TBody: FC<TBodyPropsType> =
+  ({
+     items,
+     additionalTitleOne,
+     additionalTitleTwo,
+     additionalTitleThree
+   }) => {
+    return (
+      <tbody>
+      {items.map((item) => {
+        const {
+          id,
+          changeEth,
+          holdingsEth,
+          currentFloorEth,
+          previousFloorEth,
+          currentFloorDollar,
+          amountSpentEth,
+          amountSpentDollar,
+          previousFloorDollar,
+          holdingsDollar,
+          plDollar,
+          plEth,
+          totalNft,
+          collectionName,
+          changeDollar,
+          collectionIcon
+        } = item;
 
-      return (
-        <tr key={id}>
-          <TD isShowIcon primaryTitle={collection.name} secondaryTitle={collection.totalNft} />
-          <TD primaryTitle={previousFloor.eth} secondaryTitle={previousFloor.dollar} />
-          <TD primaryTitle={currentFloor.eth} secondaryTitle={currentFloor.dollar} />
-          <TD primaryTitle={change.eth} secondaryTitle={change.dollar} />
-          <TD primaryTitle={amountSpent.eth} secondaryTitle={amountSpent.dollar} />
-          <TD primaryTitle={holdings.eth} secondaryTitle={holdings.dollar} />
-          <TD primaryTitle={pl.eth} secondaryTitle={pl.dollar} />
-        </tr>
-      );
-    })}
-    </tbody>
-  );
-};
+        return (
+          <tr key={id}>
+            <TD collectionIcon={collectionIcon} primaryTitle={collectionName}
+                secondaryTitle={`${totalNft} ${additionalTitleThree}`} />
+            <TD primaryTitle={`${previousFloorEth} ${additionalTitleOne}`}
+                secondaryTitle={`${additionalTitleTwo}${previousFloorDollar}`} />
+            <TD primaryTitle={`${currentFloorEth} ${additionalTitleOne}`}
+                secondaryTitle={`${additionalTitleTwo}${currentFloorDollar}`} />
+            <TD primaryTitle={`${changeEth} ${additionalTitleOne}`}
+                secondaryTitle={`${additionalTitleTwo}${changeDollar}`} />
+            <TD primaryTitle={`${amountSpentEth} ${additionalTitleOne}`}
+                secondaryTitle={`${additionalTitleTwo}${amountSpentDollar}`} />
+            <TD primaryTitle={`${holdingsEth} ${additionalTitleOne}`}
+                secondaryTitle={`${additionalTitleTwo}${holdingsDollar}`} />
+            <TD primaryTitle={`${plEth} ${additionalTitleOne}`} secondaryTitle={`${additionalTitleTwo}${plDollar}`} />
+          </tr>
+        );
+      })}
+      </tbody>
+    );
+  };

@@ -7,7 +7,7 @@ export { useEye } from "./useEye";
 export { useOutside } from "./useOutside";
 export { useFetching } from "./useFetching";
 export { usePages } from "./usePages";
-export { useSortedUsers } from "./useSortedUsers";
+export { useSortedItems } from "hooks/useSortedItems";
 export { useSearchedUsers } from "./useSearchedUsers";
 export { useScroll } from "./useScroll";
 export { useFallbackImg } from "./useFallbackImg";

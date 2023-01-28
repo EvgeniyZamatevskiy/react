@@ -1,122 +1,132 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Table } from "Table/Table";
+import { useSortedItems } from "hooks";
+import { SortStatusType } from "hooks/useSortedItems";
 
 export type CategoryType = {
   id: number
   title: string
-}
-
-type ValueType = {
-  eth: string
-  dollar: string
+  sortValue: string
 }
 
 export type ItemType = {
   id: number
-  collection: { name: string, totalNft: string }
-  previousFloor: ValueType
-  currentFloor: ValueType
-  change: ValueType
-  amountSpent: ValueType
-  holdings: ValueType
-  pl: ValueType
+  collectionName: string
+  collectionIcon: string
+  totalNft: number
+  previousFloorEth: number
+  previousFloorDollar: number
+  currentFloorEth: number
+  currentFloorDollar: number
+  changeEth: number
+  changeDollar: number
+  amountSpentEth: number
+  amountSpentDollar: number
+  holdingsEth: number
+  holdingsDollar: number
+  plEth: number
+  plDollar: number
 }
 
 export const App: FC = () => {
 
-  const items: ItemType[] = [
+  const [items, setItems] = useState<ItemType[]>([
     {
       id: 1,
-      collection: { name: "Minimal Grow", totalNft: "1 NFT" },
-      previousFloor: { eth: "0,32 ETH", dollar: "$50,58" },
-      currentFloor: { eth: "0,32 ETH", dollar: "$50,58" },
-      change: { eth: "0,0025 ETH", dollar: "$4,31" },
-      amountSpent: { eth: "0 ETH", dollar: "$0" },
-      holdings: { eth: "0,32 ETH", dollar: "$50,580" },
-      pl: { eth: "0,0025 ETH", dollar: "$4,31" }
+      collectionName: "Haunted Space Genesis Pass Official",
+      collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8yMjgvJUQwJUJCJUQwJUIwMi5qcGc=",
+      totalNft: 13,
+      previousFloorEth: 0.32,
+      previousFloorDollar: 12,
+      currentFloorEth: 0.22,
+      currentFloorDollar: 10.58,
+      changeEth: 32,
+      changeDollar: 13.3,
+      amountSpentEth: 0.31,
+      amountSpentDollar: 2,
+      holdingsEth: 0.32,
+      holdingsDollar: 2.32,
+      plEth: 1.251,
+      plDollar: 32
     },
     {
       id: 2,
-      collection: { name: "Minimal Grow 2", totalNft: "1 NFT" }, //////////
-      previousFloor: { eth: "2 ETH", dollar: "$2" },
-      currentFloor: { eth: "2 ETH", dollar: "$2" },
-      change: { eth: "0,0025 ETH", dollar: "$4,31" },
-      amountSpent: { eth: "0 ETH", dollar: "$0" },
-      holdings: { eth: "0,32 ETH", dollar: "$50,580" },
-      pl: { eth: "0,0025 ETH", dollar: "$4,31" }
+      collectionName: "Creepz Genesis",
+      collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8zNS8lRDElODElRDAlQkElRDElODMlRDAlQjclRDAlQjclRDElOEZfJUQwJUJCJUQwJUJBJUQwJUIzJUQwJUJGLnBuZw==",
+      totalNft: 23,
+      previousFloorEth: 1,
+      previousFloorDollar: 435.58,
+      currentFloorEth: 324,
+      currentFloorDollar: 431.58,
+      changeEth: 421,
+      changeDollar: 435,
+      amountSpentEth: 3,
+      amountSpentDollar: 421,
+      holdingsEth: 421,
+      holdingsDollar: 421,
+      plEth: 789,
+      plDollar: 998
     },
     {
       id: 3,
-      collection: { name: "Minimal Grow 3", totalNft: "1 NFT" },
-      previousFloor: { eth: "3 ETH", dollar: "$3" },
-      currentFloor: { eth: "3 ETH", dollar: "$3" },
-      change: { eth: "0,0025 ETH", dollar: "$4,31" },
-      amountSpent: { eth: "0 ETH", dollar: "$0" },
-      holdings: { eth: "0,32 ETH", dollar: "$50,580" },
-      pl: { eth: "0,0025 ETH", dollar: "$4,31" }
-    },
-    {
-      id: 4,
-      collection: { name: "Minimal Grow 3", totalNft: "1 NFT" },
-      previousFloor: { eth: "3 ETH", dollar: "$3" },
-      currentFloor: { eth: "3 ETH", dollar: "$3" },
-      change: { eth: "0,0025 ETH", dollar: "$4,31" },
-      amountSpent: { eth: "0 ETH", dollar: "$0" },
-      holdings: { eth: "0,32 ETH", dollar: "$50,580" },
-      pl: { eth: "0,0025 ETH", dollar: "$4,31" }
-    },
-    {
-      id: 5,
-      collection: { name: "Minimal Grow 3", totalNft: "1 NFT" },
-      previousFloor: { eth: "3 ETH", dollar: "$3" },
-      currentFloor: { eth: "3 ETH", dollar: "$3" },
-      change: { eth: "0,0025 ETH", dollar: "$4,31" },
-      amountSpent: { eth: "0 ETH", dollar: "$0" },
-      holdings: { eth: "0,32 ETH", dollar: "$50,580" },
-      pl: { eth: "0,0025 ETH", dollar: "$4,31" }
-    },
-    {
-      id: 6,
-      collection: { name: "Minimal Grow 3", totalNft: "1 NFT" },
-      previousFloor: { eth: "3 ETH", dollar: "$3" },
-      currentFloor: { eth: "3 ETH", dollar: "$3" },
-      change: { eth: "0,0025 ETH", dollar: "$4,31" },
-      amountSpent: { eth: "0 ETH", dollar: "$0" },
-      holdings: { eth: "0,32 ETH", dollar: "$50,580" },
-      pl: { eth: "0,0025 ETH", dollar: "$4,31" }
-    },
-    {
-      id: 7,
-      collection: { name: "Minimal Grow 3", totalNft: "1 NFT" },
-      previousFloor: { eth: "3 ETH", dollar: "$3" },
-      currentFloor: { eth: "3 ETH", dollar: "$3" },
-      change: { eth: "0,0025 ETH", dollar: "$4,31" },
-      amountSpent: { eth: "0 ETH", dollar: "$0" },
-      holdings: { eth: "0,32 ETH", dollar: "$50,580" },
-      pl: { eth: "0,0025 ETH", dollar: "$4,31" }
+      collectionName: "Llamaverse",
+      collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8zMDcvZkxmc3NZaDdfNDAweDQwMC5qcGc=",
+      totalNft: 12,
+      previousFloorEth: 42,
+      previousFloorDollar: 12.58,
+      currentFloorEth: 53,
+      currentFloorDollar: 33.58,
+      changeEth: 53.23,
+      changeDollar: 14.31,
+      amountSpentEth: 31,
+      amountSpentDollar: 30,
+      holdingsEth: 66.34,
+      holdingsDollar: 20.50,
+      plEth: 51.51,
+      plDollar: 44.31
     }
-  ];
+  ]);
+  const [sortStatus, setSortStatus] = useState<SortStatusType>("default");
+  const [sortValue, setSortValue] = useState("");
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(-1);
+
+  const sortedItems = useSortedItems<ItemType>(items, sortValue, sortStatus);
 
   const categories: CategoryType[] = [
-    { id: 1, title: "Collection" },
-    { id: 2, title: "Previous Floor" },
-    { id: 3, title: "Current Floor" },
-    { id: 4, title: "Change" },
-    { id: 5, title: "Amount spent" },
-    { id: 6, title: "Holdings" },
-    { id: 7, title: "P&L" }
+    { id: 1, title: "Collection", sortValue: "collectionName" },
+    { id: 2, title: "Previous Floor", sortValue: "previousFloorEth" },
+    { id: 3, title: "Current Floor", sortValue: "currentFloorEth" },
+    { id: 4, title: "Change", sortValue: "changeEth" },
+    { id: 5, title: "Amount spent", sortValue: "amountSpentEth" },
+    { id: 6, title: "Holdings", sortValue: "holdingsEth" },
+    { id: 7, title: "P&L", sortValue: "plEth" }
   ];
+
+  const handleCategoryClick = (value: string, index: number) => {
+    setSortValue(value);
+    setCurrentCategoryIndex(index);
+
+    if (sortStatus === "descending" && sortValue === value) {
+      setSortStatus("ascending");
+    } else {
+      setSortStatus("descending");
+    }
+  };
 
   return (
     <div className="h-[100vh] flex items-center justify-center">
 
-
       <div
         className="overflow-x-scroll xl:overflow-x-hidden bg-[#fff] rounded-[20px] pt-[20px] pr-[24px] pl-[24px] pb-[29px]">
-        <h2 className="font-bold text-[20px] text-[#2C2C2C] mb-[12px]">Collection</h2>
-        <Table categories={categories} items={items} />
+        <h2 className="font-bold text-[20px] text-[#2C2C2C] mb-[12px]">Collections</h2>
+        <Table
+          categories={categories}
+          items={sortedItems}
+          handleCategoryClick={handleCategoryClick}
+          sortStatus={sortStatus}
+          currentCategoryIndex={currentCategoryIndex}
+        />
       </div>
-
 
     </div>
   );
