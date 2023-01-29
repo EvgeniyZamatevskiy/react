@@ -1,7 +1,8 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Table } from "Table/Table";
 import { useSortedItems } from "hooks";
 import { SortStatusType } from "hooks/useSortedItems";
+import { getLeaderBoard, LeaderBoardDataType, LeaderboardType } from "api/getLeaderBoard";
 
 export type CategoryType = {
   id: number
@@ -14,78 +15,53 @@ export type ItemType = {
   collectionName: string
   collectionIcon: string
   totalNft: number
-  previousFloorEth: number
-  previousFloorDollar: number
-  currentFloorEth: number
-  currentFloorDollar: number
-  changeEth: number
-  changeDollar: number
-  amountSpentEth: number
-  amountSpentDollar: number
-  holdingsEth: number
-  holdingsDollar: number
-  plEth: number
-  plDollar: number
+  compilationDescription1d: number | string
+  compilationDescription7d: number | string
+  compilationDescription30d: number | string
+  compilationDescriptionAll: number | string
+  ethVolume1d: number
 }
+
+const data: ItemType[] = [
+  {
+    id: 1,
+    collectionName: "Haunted Space Genesis Pass Official",
+    collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8yMjgvJUQwJUJCJUQwJUIwMi5qcGc=",
+    totalNft: 13,
+    compilationDescription1d: "<span class=\"text-red-500\">-61%</span>",
+    compilationDescription7d: "<span class=\"text-emerald-500\">+11%</span>",
+    compilationDescription30d: "<span class=\"text-emerald-500\">+41%</span>",
+    compilationDescriptionAll: "<span class=\"text-red-500\">-31%</span>",
+    ethVolume1d: 0
+  },
+  {
+    id: 2,
+    collectionName: "Creepz Genesis",
+    collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8zNS8lRDElODElRDAlQkElRDElODMlRDAlQjclRDAlQjclRDElOEZfJUQwJUJCJUQwJUJBJUQwJUIzJUQwJUJGLnBuZw==",
+    totalNft: 23,
+    compilationDescription1d: "<span class=\"text-emerald-500\">+51%</span>",
+    compilationDescription7d: "<span class=\"text-emerald-500\">+41%</span>",
+    compilationDescription30d: "<span class=\"text-red-500\">-64%</span>",
+    compilationDescriptionAll: "<span class=\"text-emerald-500\">+234%</span>",
+    ethVolume1d: 0
+  },
+  {
+    id: 3,
+    collectionName: "Llamaverse",
+    collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8zMDcvZkxmc3NZaDdfNDAweDQwMC5qcGc=",
+    totalNft: 12,
+    compilationDescription1d: "<span class=\"text-emerald-500\">+42%</span>",
+    compilationDescription7d: "<span class=\"text-red-500\">-67%</span>",
+    compilationDescription30d: "<span class=\"text-emerald-500\">+63%</span>",
+    compilationDescriptionAll: "<span class=\"text-red-500\">-87%</span>",
+    ethVolume1d: 0
+  }
+];
 
 export const App: FC = () => {
 
-  const [items, setItems] = useState<ItemType[]>([
-    {
-      id: 1,
-      collectionName: "Haunted Space Genesis Pass Official",
-      collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8yMjgvJUQwJUJCJUQwJUIwMi5qcGc=",
-      totalNft: 13,
-      previousFloorEth: 0.32,
-      previousFloorDollar: 12,
-      currentFloorEth: 0.22,
-      currentFloorDollar: 10.58,
-      changeEth: 32,
-      changeDollar: 13.3,
-      amountSpentEth: 0.31,
-      amountSpentDollar: 2,
-      holdingsEth: 0.32,
-      holdingsDollar: 2.32,
-      plEth: 1.251,
-      plDollar: 32
-    },
-    {
-      id: 2,
-      collectionName: "Creepz Genesis",
-      collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8zNS8lRDElODElRDAlQkElRDElODMlRDAlQjclRDAlQjclRDElOEZfJUQwJUJCJUQwJUJBJUQwJUIzJUQwJUJGLnBuZw==",
-      totalNft: 23,
-      previousFloorEth: 1,
-      previousFloorDollar: 435.58,
-      currentFloorEth: 324,
-      currentFloorDollar: 431.58,
-      changeEth: 421,
-      changeDollar: 435,
-      amountSpentEth: 3,
-      amountSpentDollar: 421,
-      holdingsEth: 421,
-      holdingsDollar: 421,
-      plEth: 789,
-      plDollar: 998
-    },
-    {
-      id: 3,
-      collectionName: "Llamaverse",
-      collectionIcon: "https://static.conft.app/aHR0cHM6Ly9hcGkuY29uZnQuYXBwL3VwbG9hZHMvY29sbGVjdGlvbi9pbWFnZS8zMDcvZkxmc3NZaDdfNDAweDQwMC5qcGc=",
-      totalNft: 12,
-      previousFloorEth: 42,
-      previousFloorDollar: 12.58,
-      currentFloorEth: 53,
-      currentFloorDollar: 33.58,
-      changeEth: 53.23,
-      changeDollar: 14.31,
-      amountSpentEth: 31,
-      amountSpentDollar: 30,
-      holdingsEth: 66.34,
-      holdingsDollar: 20.50,
-      plEth: 51.51,
-      plDollar: 44.31
-    }
-  ]);
+  const [leaderBoard, setLeaderBoard] = useState<LeaderboardType[]>([]);
+  const [items, setItems] = useState<ItemType[]>([]);
   const [sortStatus, setSortStatus] = useState<SortStatusType>("default");
   const [sortValue, setSortValue] = useState("");
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(-1);
@@ -94,12 +70,10 @@ export const App: FC = () => {
 
   const categories: CategoryType[] = [
     { id: 1, title: "Collection", sortValue: "collectionName" },
-    { id: 2, title: "Previous Floor", sortValue: "previousFloorEth" },
-    { id: 3, title: "Current Floor", sortValue: "currentFloorEth" },
-    { id: 4, title: "Change", sortValue: "changeEth" },
-    { id: 5, title: "Amount spent", sortValue: "amountSpentEth" },
-    { id: 6, title: "Holdings", sortValue: "holdingsEth" },
-    { id: 7, title: "P&L", sortValue: "plEth" }
+    { id: 2, title: "1d", sortValue: "compilationDescription1d" },
+    { id: 3, title: "7d", sortValue: "compilationDescription7d" },
+    { id: 4, title: "30d", sortValue: "compilationDescription30d" },
+    { id: 5, title: "All", sortValue: "compilationDescriptionAll" }
   ];
 
   const handleCategoryClick = (value: string, index: number) => {
@@ -112,6 +86,50 @@ export const App: FC = () => {
       setSortStatus("descending");
     }
   };
+
+  useEffect(() => {
+    const items = data.map((item) => {
+
+      const compilationDescription1d = Number(String(item.compilationDescription1d).replace(/[^-+0-9]/gim, "").slice(5));
+      const compilationDescription7d = Number(String(item.compilationDescription7d).replace(/[^-+0-9]/gim, "").slice(5));
+      const compilationDescription30d = Number(String(item.compilationDescription30d).replace(/[^-+0-9]/gim, "").slice(5));
+      const compilationDescriptionAll = Number(String(item.compilationDescriptionAll).replace(/[^-+0-9]/gim, "").slice(5));
+
+      return {
+        ...item,
+        compilationDescription1d,
+        compilationDescription7d,
+        compilationDescription30d,
+        compilationDescriptionAll
+      };
+    });
+
+    setItems(items);
+  }, []);
+
+  useEffect(() => {
+
+    const leaderBoardData: LeaderBoardDataType = { ranking_metric: "eth_volume", interval: "one_day", page_size: 50 };
+
+    getLeaderBoard(leaderBoardData)
+      .then(({ response }) => {
+        // @ts-ignore
+
+        const newArr = response.leaderboard.map((leaderboard) => {
+
+          return {
+            ...leaderboard,
+            ethVolume1d: leaderboard.value
+          };
+        });
+
+        console.log(newArr);
+
+        // setLeaderBoard();
+      });
+  }, []);
+
+  console.log(leaderBoard);
 
   return (
     <div className="h-[100vh] flex items-center justify-center">

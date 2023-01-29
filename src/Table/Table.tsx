@@ -30,7 +30,7 @@ export const Table: FC<TablePropsType> =
           sortStatus={sortStatus}
           currentCategoryIndex={currentCategoryIndex}
         />
-        <TBody items={items} additionalTitleOne="ETH" additionalTitleTwo="$" additionalTitleThree="NFT" />
+        <TBody items={items} />
       </table>
     );
   };
