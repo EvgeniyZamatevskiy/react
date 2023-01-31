@@ -4,8 +4,7 @@ export type IntervalType = "one_day" | "seven_days" | "thirty_days" | "all_time"
 export type PageSizeType = 50 | 100 | 500 | 1000
 export type RankingMetricType = "eth_volume" | "sales_count"
 
-
-export type LeaderBoardDataType = {
+export type LeaderboardDataType = {
   ranking_metric: RankingMetricType
   interval: IntervalType
   page?: number
@@ -34,7 +33,7 @@ type LeaderBoardRequestType = {
 }
 
 
-export const getLeaderBoard = (leaderBoardData: LeaderBoardDataType) => {
+export const getLeaderboard = (leaderBoardData: LeaderboardDataType) => {
   return request<LeaderBoardRequestType>(
     "https://api.prod.gallop.run/v1/analytics/eth/getLeaderBoard",
     "POST",

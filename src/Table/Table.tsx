@@ -1,13 +1,14 @@
 import { FC } from "react";
 import React from "react";
-import { CategoryType, ItemType } from "App";
+import { CategoryType } from "App";
 import { THead } from "Table/components/THead";
 import { TBody } from "./components/TBody";
 import { SortStatusType } from "hooks/useSortedItems";
+import { LeaderboardType } from "api/getLeaderBoard";
 
 type TablePropsType = {
   categories: CategoryType[]
-  items: ItemType[]
+  items: LeaderboardType[]
   handleCategoryClick: (sortValue: string, index: number) => void
   sortStatus: SortStatusType
   currentCategoryIndex: number
