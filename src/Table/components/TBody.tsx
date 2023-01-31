@@ -18,7 +18,7 @@ export const TBody: FC<TBodyPropsType> = ({ items }) => {
 
       const columns: ReactElement[] = [
         <TD primaryTitle={collection_name} secondaryTitle={type} />,
-        <TD primaryTitle={value} isIndicator rightPrimaryTitle="%" />,
+        <TD primaryTitle={value} />,
         <TD primaryTitle={rank} />
       ];
 
