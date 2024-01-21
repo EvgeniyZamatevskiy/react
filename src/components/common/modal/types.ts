@@ -1,7 +1,8 @@
-import { ReactNode } from "react"
-
 export type ModalPropsType = {
-  children: ReactNode
-  isActiveModal: boolean
-  onDeactivateModalClick: () => void
-}
+  children: React.ReactNode;
+  deactivateVisibleModal: () => void;
+  isShowCloseIcon?: boolean;
+  classNameModal?: string;
+  classNameContent?: string;
+  classNameCloseIcon?: string;
+};

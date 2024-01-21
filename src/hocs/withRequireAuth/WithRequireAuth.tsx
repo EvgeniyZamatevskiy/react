@@ -3,7 +3,6 @@ import { Navigate, useLocation } from "react-router-dom";
 import { RequireAuthPropsType } from "./types";
 
 export const WithRequireAuth: FC<RequireAuthPropsType> = ({ children }) => {
-
   const location = useLocation();
 
   const isAuth = false;
@@ -33,7 +32,6 @@ export const WithRequireAuth: FC<RequireAuthPropsType> = ({ children }) => {
 //
 //   return NavigateComponent;
 // };
-
 
 // Использование в компоненте Login:
 // export type LocationStateType = {

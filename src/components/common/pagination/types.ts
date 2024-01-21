@@ -1,7 +1,7 @@
 export type PaginationPropsType = {
-  totalItemsCount: number,
-  pageCount: number
-  page: number
-  handleSetPageClick: (page: number) => void
-  portionSize?: number
-}
+  totalCount: number;
+  pageSize: number;
+  currentPage: number;
+  siblingCount?: number;
+  onPageChange: (page: number) => void;
+};

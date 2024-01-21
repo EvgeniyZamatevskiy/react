@@ -1,14 +1,7 @@
 export { useAppDispatch } from "./useAppDispatch";
 export { useAppSelector } from "./useAppSelector";
-export { useActions } from "./useActions";
 export { useDebounce } from "./useDebounce";
 export { useGeoLocation } from "./useGeoLocation";
-export { useEye } from "./useEye";
-export { useOutside } from "./useOutside";
-export { useFetching } from "./useFetching";
-export { usePages } from "./usePages";
-export { useSortedItems } from "hooks/useSortedItems";
-export { useSearchedUsers } from "./useSearchedUsers";
-export { useScroll } from "./useScroll";
-export { useFallbackImg } from "./useFallbackImg";
-export { useActiveButton } from "./useActiveButton";
+export { useClickOutside } from "./useClickOutside";
+export { useApplyClass } from "./useApplyClass";
+export { usePagination } from "./usePagination";
