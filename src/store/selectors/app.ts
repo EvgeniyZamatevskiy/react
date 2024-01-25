@@ -1,5 +1,5 @@
-import { RootStateType } from "store"
-import { LoadingStatusType } from "store/slices/app/types"
+import { RootStateType } from 'store'
+import { LoadingStatusType } from 'store/slices/app/types'
 
 export const selectLoadingStatus = (state: RootStateType): LoadingStatusType => state.app.loadingStatus
 

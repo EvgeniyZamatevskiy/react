@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
 export const useApplyClass = (targetElement: string, className: string) => {
   useEffect(() => {
-    const element = document.querySelector(targetElement);
-    if (!element) return;
+    const element = document.querySelector(targetElement)
+    if (!element) return
 
-    element.classList.add(className);
+    element.classList.add(className)
 
-    return () => element.classList.remove(className);
-  }, [targetElement, className]);
-};
+    return () => element.classList.remove(className)
+  }, [targetElement, className])
+}

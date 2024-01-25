@@ -1,6 +1,4 @@
-import { AppRouter } from "components";
-import { FC } from "react";
+import { AppRouter } from 'components'
+import { FC } from 'react'
 
-export const App: FC = () => {
-  return <AppRouter />;
-};
+export const App: FC = () => <AppRouter />

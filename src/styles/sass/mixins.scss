@@ -1,4 +1,4 @@
-@import "./templates.scss";
+@import './templates.scss';
 
 @mixin flex($flexDirection, $justifyContent, $alignItems, $flexWrap: null) {
   @extend %flexBox;

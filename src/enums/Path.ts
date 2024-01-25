@@ -1,5 +1,5 @@
 export enum Path {
-  HOME = "/",
-  NOT_FOUND = "*",
-  NOT_FOUND_404 = "404",
+  HOME = '/',
+  NOT_FOUND = '*',
+  NOT_FOUND_404 = '404',
 }

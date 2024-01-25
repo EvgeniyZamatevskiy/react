@@ -1,46 +1,46 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 
 type ErrorType = {
-  code: number;
-  message: string;
-};
+  code: number
+  message: string
+}
 
 type LocationType = {
-  isLoaded: boolean;
-  coordinates?: { lat: number; lon: number };
-  error?: ErrorType;
-};
+  isLoaded: boolean
+  coordinates?: { lat: number; lon: number }
+  error?: ErrorType
+}
 
 export const useGeoLocation = () => {
   const [location, setLocation] = useState<LocationType>({
     isLoaded: false,
     coordinates: { lat: 0, lon: 0 },
-  });
+  })
 
-  const onSuccess = (location: GeolocationPosition): void => {
+  const onSuccess = (currentLocation: GeolocationPosition): void => {
     setLocation({
       isLoaded: true,
       coordinates: {
-        lat: location.coords.latitude,
-        lon: location.coords.longitude,
+        lat: currentLocation.coords.latitude,
+        lon: currentLocation.coords.longitude,
       },
-    });
-  };
+    })
+  }
 
   const onError = (error: ErrorType): void => {
     setLocation({
       isLoaded: true,
       error: { code: error.code, message: error.message },
-    });
-  };
+    })
+  }
 
   useEffect(() => {
-    if (!("geolocation" in navigator)) {
-      onError({ code: 0, message: "Geolocation not supported" });
+    if (!('geolocation' in navigator)) {
+      onError({ code: 0, message: 'Geolocation not supported' })
     }
 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  }, []);
+    navigator.geolocation.getCurrentPosition(onSuccess, onError)
+  }, [])
 
-  return location;
-};
+  return location
+}

@@ -4,4 +4,4 @@ export type AppSliceInitialStateType = {
   isInitialized: boolean
 }
 
-export type LoadingStatusType = "idle" | "loading" | "succeeded" | "failed"
+export type LoadingStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'

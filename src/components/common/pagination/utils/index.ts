@@ -1,1 +1,1 @@
-export { makeRange } from "./makeRange";
+export { makeRange } from './makeRange'

@@ -1,7 +1,3 @@
-import type { FC } from "react";
+import type { FC } from 'react'
 
-type HomePropsType = {};
-
-export const Home: FC<HomePropsType> = () => {
-  return <div>Home</div>;
-};
+export const Home: FC = () => <div>Home</div>

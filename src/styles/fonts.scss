@@ -1,14 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
 @font-face {
-  font-family: "AkzidenzGrotesk";
-  src: url("../styles/fonts/AkzidenzGroteskBQ-BdCnd.eot");
-  src: url("../styles/fonts/AkzidenzGroteskBQ-BdCnd.eot?#iefix")
-      format("embedded-opentype"),
-    url("../styles/fonts/AkzidenzGroteskBQ-BdCnd.woff") format("woff"),
-    url("../styles/fonts/AkzidenzGroteskBQ-BdCnd.ttf") format("truetype"),
-    url("../styles/fonts/AkzidenzGroteskBQ-BdCnd.svg#AkzidenzGroteskBQ-BdCnd")
-      format("svg");
+  font-family: 'AkzidenzGrotesk';
+  src: url('../styles/fonts/AkzidenzGroteskBQ-BdCnd.eot');
+  src:
+    url('../styles/fonts/AkzidenzGroteskBQ-BdCnd.eot?#iefix') format('embedded-opentype'),
+    url('../styles/fonts/AkzidenzGroteskBQ-BdCnd.woff') format('woff'),
+    url('../styles/fonts/AkzidenzGroteskBQ-BdCnd.ttf') format('truetype'),
+    url('../styles/fonts/AkzidenzGroteskBQ-BdCnd.svg#AkzidenzGroteskBQ-BdCnd') format('svg');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
